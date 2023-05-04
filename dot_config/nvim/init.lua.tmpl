@@ -222,6 +222,7 @@ vim.opt.expandtab = true
 vim.g.loaded_netrw       = 1
 vim.g.loaded_netrwPlugin = 1
 
+{{ if eq .colemak true }}
 ---------------------------------------------------------------
 -- Colemak remappings
 ---------------------------------------------------------------
@@ -254,6 +255,32 @@ map("", "gO", "")
 map("", "k", "o")
 map("", "K", "O")
 
+-- E and I function like PageUp/Down
+map("", "E", "<C-f>")
+map("", "I", "<C-b>")
+
+-- Lower case j joins lines
+map("", "j", "J")
+
+-- Hack to work around conflict with `d`elete `i`n
+map("n",  "di", "dk")
+map("n",  "dd", "dd")
+
+-- Easy window switching
+map("", "<leader>n", ":wincmd h<CR>")
+map("", "<leader>e", ":wincmd j<CR>")
+map("", "<leader>i", ":wincmd k<CR>")
+map("", "<leader>o", ":wincmd l<CR>")
+
+-- Creating newline without insert mode
+map("", "<C-k>",   "o<Esc>o")
+map("", "<C-S-K>", "O<Esc>O")
+
+-- Movement between previous motions
+map("", "<C-H>",   "<C-O>")
+map("", "<C-S-H>", "<C-I>")
+{{ end }}
+
 ---------------------------------------------------------------
 -- Custom mappings
 ---------------------------------------------------------------
@@ -265,13 +292,6 @@ map("", "zi", "H")
 -- W and B move to beginning/end of word inclusive
 map("", "W", "e")
 map("", "B", "gE")
-
--- E and I function like PageUp/Down
-map("", "E", "<C-f>")
-map("", "I", "<C-b>")
-
--- Lower case j joins lines
-map("", "j", "J")
 
 -- Leader-action to delete without copying
 map("",  "<leader>x", "\"_x")
@@ -290,26 +310,8 @@ map("",  "<leader>d", "\"_d")
 map("",  "<leader>D", "\"_D")
 map("v", "<leader>d", "\"_d")
 
--- Hack to work around conflict with `d`elete `i`n
-map("n",  "di", "dk")
-map("n",  "dd", "dd")
-
 -- Enter clears toggles highlighting
 map("", "<CR>", ":set hlsearch!<CR>")
-
--- Easy window switching
-map("", "<leader>n", ":wincmd h<CR>")
-map("", "<leader>e", ":wincmd j<CR>")
-map("", "<leader>i", ":wincmd k<CR>")
-map("", "<leader>o", ":wincmd l<CR>")
-
--- Creating newline without insert mode
-map("", "<C-k>",   "o<Esc>o")
-map("", "<C-S-K>", "O<Esc>O")
-
--- Movement between previous motions
-map("", "<C-H>",   "<C-O>")
-map("", "<C-S-H>", "<C-I>")
 
 -- <leader>l toggles line numbers
 map("n", "<leader>l", ":set number!<CR>")
@@ -349,7 +351,7 @@ vim.cmd([[
     iabbrev lenny_ ( ͡° ͜ʖ ͡°)
 ]])
 
-
+{{ if (and (ne .chezmoi.username "root") (eq .plugins true)) }}
 ---------------------------------------------------------------
 -- Plugin configuration
 --
@@ -530,6 +532,7 @@ then
 
     vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 end
+{{ end }}
 
 ---------------------------------------------------------------
 -- Status line
@@ -582,6 +585,7 @@ vim.cmd([[
     augroup end
 ]])
 
+{{ if (and (ne .chezmoi.username "root") (eq .plugins true)) }}
 ---------------------------------------------------------------
 -- Packer
 ---------------------------------------------------------------
@@ -646,3 +650,4 @@ require("packer").startup({
         },
     },
 })
+{{ end }}

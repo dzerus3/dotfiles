@@ -1,0 +1,19 @@
+# Whether to install zsh and neovim plugins
+plugins = true
+# Whether to enable colemak rebinds
+colemak = true
+
+# Whether to enable zsh completion
+zshcomp = true
+# Whether to enable zsh abbeviations
+zshabbr = true
+
+# TODO
+# Whether this is a desktop computer
+desktop = true
+# Whether you're using a tiling WM (changes terminal emulator)
+sway = true
+# Whether to use exclusively neovim
+neovim = true
+# What app should be used for MANPAGER (less, most, or nvim)
+manpager = "less"

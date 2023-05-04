@@ -1,3 +1,4 @@
+{{ if (eq .zshcomp true) }}
 ################################################################
 # Completion
 #
@@ -51,6 +52,7 @@ zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*' rehash true
 zstyle ':completion:*' ignore-parents parent pwd
 zstyle ':completion:*' list-suffixes true
+{{ end }}
 
 ################################################################
 # Keybindings
@@ -62,11 +64,13 @@ zstyle ':completion:*' list-suffixes true
 # Enables emacs keybindings
 bindkey -e
 
+{{ if (eq .colemak true) }}
 # Gives tab selection vim navigation
 bindkey -M menuselect 'n' vi-backward-char
 bindkey -M menuselect 'e' vi-down-line-or-history
 bindkey -M menuselect 'i' vi-up-line-or-history
 bindkey -M menuselect 'o' vi-forward-char
+{{ end }}
 
 # Edit command in vim with Ctrl + x
 autoload edit-command-line
@@ -81,6 +85,7 @@ bindkey '^x' edit-command-line
 
 source $ZDOTDIR/modules/grc.zsh
 
+{{ if (eq .zshabbr true) }}
 ################################################################
 # Abbreviations
 #
@@ -89,6 +94,7 @@ source $ZDOTDIR/modules/grc.zsh
 ################################################################
 
 source $ZDOTDIR/modules/abbreviations.zsh
+{{ end }}
 
 ################################################################
 # General options
@@ -185,24 +191,23 @@ setopt inc_append_history_time
 # Plugins
 ################################################################
 
-# If you don't want plugins, don't create $ZDOTDIR/plugins
-if [ -d $ZDOTDIR/plugins ]; then
-    source $ZDOTDIR/modules/plugins.zsh
+{{ if (and (ne .chezmoi.username "root") (eq .plugins true)) }}
+source $ZDOTDIR/modules/plugins.zsh
 
-    # A portable alternative to zoxide
-    #plugin-load skywind3000/z.lua
+# A portable alternative to zoxide
+#plugin-load skywind3000/z.lua
 
-    # Allows displaying git status as part of prompt
-    plugin-load woefe/git-prompt.zsh
-    # Makes history searching more intelligent
-    plugin-load zsh-users/zsh-history-substring-search
-    # Enables syntax highlighting in the shell
-    plugin-load zdharma-continuum/fast-syntax-highlighting
+# Allows displaying git status as part of prompt
+plugin-load woefe/git-prompt.zsh
+# Makes history searching more intelligent
+plugin-load zsh-users/zsh-history-substring-search
+# Enables syntax highlighting in the shell
+plugin-load zdharma-continuum/fast-syntax-highlighting
 
-    # Rebinds up/down to use substring search
-    bindkey '^[[A' history-substring-search-up
-    bindkey '^[[B' history-substring-search-down
-fi
+# Rebinds up/down to use substring search
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+{{ end }}
 
 ################################################################
 # Custom functions
@@ -214,6 +219,7 @@ grep --version | grep GNU > /dev/null && alias grep='grep --color=auto'
 diff --version | grep GNU > /dev/null && alias diff='diff --color=auto'
 alias ip='ip --color=auto'
 
+{{ if (eq .zshabbr true) }}
 abbrev cls='clear'
 abbrev md='mkdir'
 
@@ -230,9 +236,9 @@ if command -v nvim &> /dev/null; then
 fi
 
 # Dotfile configuration
-alias dotfiles="git --git-dir=$HOME/.local/share/dotfiles --work-tree=$HOME"
-alias datafiles="git --git-dir=$HOME/.local/share/datafiles --work-tree=$HOME"
-abbrev dot='dotfiles'
+#alias dotfiles="git --git-dir=$HOME/.local/share/dotfiles --work-tree=$HOME"
+#abbrev dot='dotfiles'
+abbrev che='chezmoi'
 abbrev data='datafiles'
 
 # Easy editing of common files
@@ -256,6 +262,9 @@ if command -v yt-dlp &> /dev/null; then
     abbrev yt-music='yt-dlp --extract-audio --audio-format opus --yes-playlist -o "%(track)s__%(artist)s__%(album)s__%(release_year)s.%(ext)s"'
     abbrev yt-audiobook='yt-dlp --extract-audio --audio-format mp3 --yes-playlist -o "%(title)s.%(ext)s"'
 fi
+{{ end }}
+
+alias datafiles="git --git-dir=$HOME/.local/share/datafiles --work-tree=$HOME"
 
 alias wget="wget --hsts-file $XDG_CACHE_HOME/wget-hsts"
 
