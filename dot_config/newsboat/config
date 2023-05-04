@@ -1,0 +1,65 @@
+# Thanks to https://forums.freebsd.org/threads/newsboat-rss-reader-enable-vim-key-bindings.69448/
+
+# Reload feeds on startup
+auto-reload no
+# Keep all articles in feeds
+max-items 0
+
+# Browser
+browser /usr/bin/lynx
+# Open link with mpv
+macro m set browser "setsid -f mpv --really-quiet --no-terminal" ; open-in-browser ; set browser lynx
+# Open link with firefox
+macro l set browser "firefox-bin %u"; open-in-browser ; set browser "lynx %u"
+# Save link with buku
+macro b set browser "buku --tag newsboat -a %u"; open-in-browser ; set browser "lynx %u"
+
+# Unbinds neio keys
+unbind-key ENTER
+unbind-key n
+unbind-key e
+unbind-key i
+unbind-key o
+unbind-key E
+unbind-key I
+
+# Sets neio for Vim-like navigation
+bind-key n quit
+bind-key e down
+bind-key i up
+bind-key o open
+bind-key E next
+bind-key I prev
+
+# l opens article in browser
+unbind-key l
+bind-key l open-in-browser-and-mark-read
+
+# u toggles read status
+unbind-key u
+unbind-key N
+bind-key u toggle-article-read
+
+# Ctrl + u shows all urls
+unbind-key ^U
+bind-key ^U show-urls
+
+# y for downloading podcasts
+unbind-key y
+bind-key y enqueue
+
+# z/Z for sorting
+unbind-key g
+unbind-key G
+unbind-key z
+bind-key z sort
+bind-key Z rev-sort
+
+# g/G move to top/bottom of feed
+bind-key g home
+bind-key G end
+
+# q quits the program
+unbind-key q
+unbind-key Q
+bind-key q hard-quit

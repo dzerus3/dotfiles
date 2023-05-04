@@ -1,0 +1,10 @@
+e forw-line
+E forw-screen
+i back-line
+I back-screen
+
+h repeat-search
+H reverse-search
+
+n left-scroll
+o right-scroll

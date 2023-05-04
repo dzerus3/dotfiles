@@ -1,0 +1,18 @@
+bind q mixer close
+bind 0 mixer control_set_100
+
+bind n textbox left
+bind e textbox down
+bind i textbox up
+bind o textbox right
+
+bind e mixer control_down_5
+bind i mixer control_up_5
+
+bind n mixer previous
+bind o mixer next
+
+bind l mixer select_card
+
+color menu white black bold
+color menu_selected white black reverse

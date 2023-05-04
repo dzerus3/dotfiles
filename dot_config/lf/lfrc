@@ -1,0 +1,320 @@
+# Integrates elements of
+#   https://github.com/thezeroalpha/dotfiles/blob/master/lf/lfrc
+#   https://github.com/BrodieRobertson/dotfiles/blob/master/config/lf/lfrc
+
+# Remove some defaults
+map c
+map h
+map j
+map k
+map l
+map H
+map J
+map K
+map L
+
+# Movement
+## Basic movement
+map n updir
+map e down
+map i up
+map o open
+
+## Marks
+#m: Create new mark
+#': Move to mark
+#": Remove mark
+
+## Find
+#f: Finds file forward
+#F: Finds file backward
+#,: Find next
+#;: Find previous
+
+# TODO: Broken
+#map <c-e> scroll-down
+#map <c-i> scroll-up
+
+## Moves up and down a whole page
+map E page-down
+map I page-up
+
+#gg moves to top of directory
+#G  moves to bottom of directory
+
+## Uses zoxide to change directories
+map zi zi
+
+# File manipulation
+map lf push %touch<space>
+map lF newfile
+map ld push %mkdir<space>
+map lD newfold
+map lp chmod
+
+# File manipulation
+## Opens file in EDITOR
+map k $$EDITOR "$f"
+
+map r rename
+map R batch_rename
+map x delete
+
+## Replaces problematic characters in file name
+map ls sanitizeName
+map lS sanitizeNameRecursive
+## Renames a file or dir to all-lowercase
+map lu lowercaseName
+map lU lowercaseNameRecursive
+
+#y: copy  file
+#d: cut   file
+#p: paste file
+map P mergedirs
+
+## Clears copy and cut buffer
+map <enter> clear
+
+## Archive Mappings
+map az zip
+map at tar
+map ag targz
+map ab tarbz
+map au unarchive
+map aU unarchivefiles
+
+# File view
+#t: Toggle file tag
+
+#zn: Disable file info
+#za: View file size and time
+#zr: Reverse file order
+#zs: Display file size
+#zt: Display file time
+
+## Selection
+#Space: Select a file
+#v: Invert selection
+#u: Unselect
+map b glob-select
+map B glob-unselect
+
+## Search
+map h search-next
+map H search-next
+
+# Creates a new file and opens it in editor
+cmd newfile ${{
+  printf "File Name: "
+  read ans
+  $EDITOR $ans
+}}
+
+# Creates new folder with selected files
+cmd newfold ${{
+    SAVEIFS=$IFS
+    IFS=$(echo -en "\n\b")
+
+    set -f
+    printf "Directory name: "
+    read newd
+    mkdir -- "$newd"
+
+    for file in "$fx"
+    do
+        mv $file $newd
+    done
+
+    IFS=$SAVEIFS
+}}
+
+# Changes file permissions for every selected file
+cmd chmod ${{
+    printf "Mode Bits: "
+    read ans
+
+    for file in "$fx"
+    do
+        chmod $ans $file
+    done
+
+    lf -remote 'send reload'
+}}
+
+# Archive bindings
+## Unarchives current file
+cmd unarchive ${{
+    case "$f" in
+        *.zip)     unzip "$f"     ;;
+        *.tar.gz)  tar -xzvf "$f" ;;
+        *.tar.bz2) tar -xjvf "$f" ;;
+        *.tar)     tar -xvf "$f"  ;;
+        *.7z)      7z x "$f"  ;;
+        *.rar)     unrar x "$f"   ;;
+        *) lf -remote "send $id echo Unsupported format"
+    esac
+}}
+
+## Unarchives current file to given directory
+cmd unarchivefiles ${{
+    set -f
+    printf "Directory name: "
+    read newd
+    mkdir -p "$newd"
+
+    for file in $fx
+    do
+        # echo Extracting: "$file" >> test.txt
+        case "$file" in
+            *.zip)     unzip -d "$newd" "$file"     ;;
+            *.tar.gz)  tar -C "$newd" -xzvf "$file" ;;
+            *.tar.bz2) tar -C "$newd" -xjvf "$file" ;;
+            *.tar)     tar -C "$newd" -xvf  "$file" ;;
+            *.7z)      7z x -o"$newd" "$file"       ;;
+            *.rar)     unrar x "$file" "$newd"      ;;
+            *) lf -remote "send $id echo Unsupported format"
+        esac
+    done
+}}
+
+## Compresses file in different ways
+cmd zip %zip -r "$f" "$(basename $f)"
+cmd tar %tar cvf "$f.tar" "$(basename $f)"
+cmd targz %tar cvzf "$f.tar.gz" "$(basename $f)"
+cmd tarbz2 %tar cjvf "$f.tar.bz2" "$(basename $f)"
+
+# Outputs the lowercase name of a file.
+# For working with wine
+cmd lowercaseName ${{
+    SAVEIFS=$IFS
+    IFS=$(echo -en "\n\b")
+
+    for file in $fx
+    do
+        mv "$file" $(echo "$file" | tr '[:upper:]' '[:lower:]')
+    done
+
+    IFS=$SAVEIFS
+}}
+
+# Outputs the lowercase name of a file.
+# For working with wine
+cmd lowercaseNameRecursive ${{
+    SAVEIFS=$IFS
+    IFS=$(echo -en "\n\b")
+
+    for file in $(find $fx | tac)
+    do
+        DIRECTORY=$(dirname $file)
+        FILENAME=$(basename $file | tr '[:upper:]' '[:lower:]')
+
+        [ ! "$file" -ef "$DIRECTORY/$FILENAME" ] && mv "$file" "$DIRECTORY/$FILENAME"
+    done
+
+    IFS=$SAVEIFS
+}}
+
+# Removes anything that is not a /, alphanumeric, or -, _, or .
+# from file name.
+cmd sanitizeName ${{
+    SAVEIFS=$IFS
+    IFS=$(echo -en "\n\b")
+
+    for file in $fx
+    do
+        mv "$file" $(echo "$file" | sed -e 's/[^A-Za-z0-9\/._-]/_/g')
+    done
+
+    IFS=$SAVEIFS
+}}
+
+# Removes anything that is not a /, alphanumeric, or -, _, or .
+# from file name.
+cmd sanitizeNameRecursive ${{
+    SAVEIFS=$IFS
+    IFS=$(echo -en "\n\b")
+
+    for file in $(find $fx | tac)
+    do
+        DIRECTORY=$(dirname $file)
+        FILENAME=$(basename $file | sed -e 's/[^A-Za-z0-9\/._-]/_/g')
+
+        [ ! "$file" -ef "$DIRECTORY/$FILENAME" ] && mv "$file" "$DIRECTORY/$FILENAME"
+    done
+
+    IFS=$SAVEIFS
+}}
+
+# Opens all filenames in vim and to edit the names
+cmd batch_rename !{{
+    contentsfile=$(mktemp)
+    trap 'rm $contentsfile' INT TERM EXIT
+    dircontents="$(command ls -1p)"
+    printf "%s" "$dircontents" | nl -n ln > "$contentsfile";
+    $EDITOR "$contentsfile"
+
+    printf "%s" "$dircontents" | paste -d '\t' "$contentsfile" - \
+    | while read -r line; do
+        orig="$(printf "%s" "$line" | cut -f3 | sed 's!/$!!')"
+        new="$(printf "%s" "$line" | cut -f2 | sed 's!/$!!')"
+        if [ "$new" != "$orig" ]; then
+            if [ -e "$new" ]; then
+                printf "%s already exists, not overwriting.\n" "$new"
+            else
+                printf "./%s -> ./%s\n" "$orig" "$new"
+                command mv -i ./"$orig" ./"$new"
+            fi
+        fi
+    done
+
+    rm "$contentsfile"
+    trap - INT TERM EXIT
+}}
+
+# Like mv, but it merges already existing directories.
+# Does not work if destination and source are on different filesystems.
+cmd mergedirs &{{
+    set -- $(cat ~/.local/share/lf/files)
+    mode="$1"
+    shift
+    case "$mode" in
+        copy)
+            cp -rf "$@" .
+        ;;
+        move)
+            cp -rfl "$@" .
+            rm -rf "$@"
+        ;;
+    esac
+    rm ~/.local/share/lf/files
+    lf -remote "send clear"
+    lf -remote "send $id reload"
+}}
+
+# TODO: Bind
+# paste as a symbolic link to original
+cmd paste_link %{{
+  if [ "$(wc -l < ~/.local/share/lf/files)" -gt 1 ]; then
+    while read -r file; do
+      case "$file" in
+        copy|move) ;;
+        *)
+          ln -s "$file" .
+          ;;
+      esac
+    done < ~/.local/share/lf/files
+  else
+    lf -remote "send $id echo no files to link."
+  fi
+}}
+
+# TODO: Broken
+# cmd z %{{
+#     result="$(zoxide query --exclude "${PWD}" -- "$@")"
+#     lf -remote "send ${id} cd '${result}'"
+# }}
+
+cmd zi ${{
+    result="$(zoxide query -i -- "$@")"
+    lf -remote "send ${id} cd '${result}'"
+}}
