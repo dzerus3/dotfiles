@@ -11,8 +11,6 @@ browser /usr/bin/lynx
 macro m set browser "setsid -f mpv --really-quiet --no-terminal" ; open-in-browser ; set browser lynx
 # Open link with firefox
 macro l set browser "firefox-bin %u"; open-in-browser ; set browser "lynx %u"
-# Save link with buku
-macro b set browser "buku --tag newsboat -a %u"; open-in-browser ; set browser "lynx %u"
 
 # Unbinds neio keys
 unbind-key ENTER
@@ -34,6 +32,14 @@ bind-key I prev
 # l opens article in browser
 unbind-key l
 bind-key l open-in-browser-and-mark-read
+
+# Bookmarking now bound to Ctrl + d
+unbind-key ^B
+unbind-key ^D
+bind-key ^D show-urls
+# Bookmarking uses buku
+bookmark-cmd ~/.local/bin/bookmark-buku.sh
+bookmark-interactive yes
 
 # u toggles read status
 unbind-key u
