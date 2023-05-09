@@ -1,0 +1,49 @@
+font:
+  normal:
+    family: AnonymousPro
+    style: Regular
+  bold:
+    family: AnonymousPro
+    style: Bold
+  italic:
+    family: AnonymousPro
+    style: Italic
+  bold_italic:
+    family: AnonymousPro
+    style: Bold Italic
+  size: 11
+
+scrolling:
+  history: 50000
+
+cursor:
+  style:
+    shape: Beam
+    blinking: Off
+  vi_mode_style: Block
+mouse:
+  hide_when_typing: false
+
+key_bindings:
+  - { key: N, mods: Control, chars: "\x1b[D" }
+  - { key: E, mods: Control, chars: "\x1b[B" }
+  - { key: I, mods: Control, chars: "\x1b[A" }
+  - { key: O, mods: Control, chars: "\x1b[C" }
+  - { key: N, mods: Shift|Control, chars: "\x1b\x62" }
+  - { key: O, mods: Shift|Control, chars: "\x1b\x66" }
+  - { key: LBracket, mods: Control, chars: "\x01" }
+  - { key: RBracket, mods: Control, chars: "\x05" }
+
+  - { key: Space, mods: Shift|Control, mode: ~Search, action: ToggleViMode }
+  - { key: N, mode: Vi|~Search, action: Left }
+  - { key: E, mode: Vi|~Search, action: Down }
+  - { key: I, mode: Vi|~Search, action: Up }
+  - { key: O, mode: Vi|~Search, action: Right }
+  - { key: Q, mode: Vi|~Search, action: ToggleViMode }
+  - { key: Y, mode: Vi|~Search, action: Copy }
+  - { key: Y, mode: Vi|~Search, action: ClearSelection }
+
+  - { key: Comma,  mods: Control, action: ScrollLineUp }
+  - { key: Period, mods: Control, action: ScrollLineDown }
+  - { key: Comma,  mods: Control|Alt, action: ScrollPageUp }
+  - { key: Period, mods: Control|Alt, action: ScrollPageDown }

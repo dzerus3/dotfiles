@@ -1,8 +1,8 @@
 # Dependencies
 ## A cursor theme called "current"
-## kitty  (Terminal Emulator)
-## wofi   (Application launcher)
-## mako   (Notification center)
+## alacritty (Terminal Emulator)
+## fuzzel (Application launcher)
+## mako (Notification center)
 ## fuzzel (For status bar)
 ## grim, slurp, jq (Screenshotting)
 
@@ -17,11 +17,11 @@ set $up i
 set $right o
 
 ## Preferred terminal emulator
-set $term kitty
+set $term alacritty
 
 ## The application launcher menu
 set $menu fuzzel --horizontal-pad=12 --vertical-pad=10 \
-           --terminal=kitty \
+           --terminal="alacritty -e" \
            --inner-pad=8 \
            --text-color=c5c8c6ff --selection-text-color=c5c8c6ff \
            --background=222426f2 --selection-color=373b41f2 \
