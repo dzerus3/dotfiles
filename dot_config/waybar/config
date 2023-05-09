@@ -1,3 +1,4 @@
+// vim: ft=json
 {
     // So that it doesn't go over the logout prompt
     "layer": "bottom",
