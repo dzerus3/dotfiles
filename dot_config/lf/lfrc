@@ -103,6 +103,8 @@ map B glob-unselect
 map h search-next
 map H search-next
 
+set previewer "/home/aleksei/.config/lf/bat-preview.sh"
+
 # Creates a new file and opens it in editor
 cmd newfile ${{
   printf "File Name: "
