@@ -34,7 +34,7 @@ key_bindings:
   - { key: LBracket, mods: Control, chars: "\x01" }
   - { key: RBracket, mods: Control, chars: "\x05" }
 
-  - { key: Space, mods: Shift|Control, mode: ~Search, action: ToggleViMode }
+  - { key: Space, mods: Control, mode: ~Search, action: ToggleViMode }
   - { key: N, mode: Vi|~Search, action: Left }
   - { key: E, mode: Vi|~Search, action: Down }
   - { key: I, mode: Vi|~Search, action: Up }
