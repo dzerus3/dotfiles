@@ -107,8 +107,8 @@
     "wireplumber": {
         "format": "{volume}% {icon}",
         "format-muted": "",
-        "on-click": "kitty -e alsamixer",
-        "on-click-right": "kitty -e alsamixer",
+        "on-click": "alacritty -e alsamixer",
+        "on-click-right": "alacritty -e alsamixer",
         "format-icons": ["", "", ""]
     },
 
