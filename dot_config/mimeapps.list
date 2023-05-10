@@ -2,10 +2,10 @@
 # See tldr xdg-mime
 
 [Default Applications]
-application/pdf=zathura.desktop;
-application/epub=zathura.desktop;
-application/fb2=zathura.desktop;
-application/djvu=zathura.desktop;
+application/pdf=org.pwmt.zathura.desktop;
+application/epub=org.pwmt.zathura.desktop;
+application/fb2=org.pwmt.zathura.desktop;
+application/djvu=org.pwmt.zathura.desktop;
 
 image/gif=imv.desktop
 image/jpeg=imv.desktop;
