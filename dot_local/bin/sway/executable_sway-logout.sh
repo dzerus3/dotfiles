@@ -24,6 +24,6 @@ case "$selection" in
     "⍈  Logout")   swaymsg exit         ;;
     "⏻  Shutdown") doas -n shutdown -h now ;;
     "⏼  Reboot")   doas -n shutdown -r now ;;
-    "⏾  Suspend")  doas -n s2ram           ;;
+    "⏾  Suspend")  swaylock --daemonize -i /usr/share/backgrounds/screensaver.jpg && doas -n s2ram          ;;
 esac
 

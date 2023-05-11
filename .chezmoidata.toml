@@ -10,7 +10,7 @@ zshabbr = true
 
 # TODO
 # Whether this machine is a laptop (tries to reduce power consumption)
-laptop = false
+laptop = true
 # Whether this machine needs to use a GUI
 graphical = true
 # Whether you're using a tiling WM (changes terminal emulator)
