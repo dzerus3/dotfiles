@@ -27,6 +27,9 @@ set $menu fuzzel --horizontal-pad=12 --vertical-pad=10 \
            --background=222426f2 --selection-color=373b41f2 \
            --font="CodeNewRoman NF:size=9,Anonymous Pro:size=9"
 
+## Directory where helper scripts are stored
+set $scripts "$HOME/.local/bin/sway"
+
 # Applications
 ## Notification center, so notifications are displayed graphically
 exec mako
@@ -94,13 +97,13 @@ bindsym $mod+d exec $menu
 floating_modifier $mod normal
 
 ## Screenshots
-bindsym Print exec $HOME/.local/bin/sway/sway-screenshot.sh
+bindsym Print exec $scripts/sway-screenshot.sh
 
 ## Reload the configuration file
 bindsym $mod+Shift+c reload
 
 ## Exit sway (logs you out of your Wayland session)
-bindsym $mod+Shift+q exec $HOME/.local/bin/sway/sway-logout.sh
+bindsym $mod+Shift+q exec $scripts/sway-logout.sh
 
 ## Moving around:
 ### Move your focus around
@@ -221,11 +224,10 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+
 bindsym $mod+r mode "resize"
 
 # See .config/waybar/config for configuration
 bar {
     swaybar_command waybar
 }
-
-include /etc/sway/config.d/*
