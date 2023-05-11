@@ -10,8 +10,6 @@ if 'infocmp -x tmux-256color > /dev/null 2>&1' 'set -g default-terminal "tmux-25
 # Fix delay when using tmux and vim
 set -s escape-time 0
 
-# Redraw status line every 10 seconds
-
 # Increase scrollback
 set -g history-limit 50000
 
@@ -23,21 +21,25 @@ set -g pane-base-index 1
 # Renumber windows dynamically
 set -g renumber-windows on
 
+{{ if (eq .colemak true) }}
 # Alt + neio move around panes
 bind -n M-n "select-pane -L"
 bind -n M-e "select-pane -D"
 bind -n M-i "select-pane -U"
 bind -n M-o "select-pane -R"
+{{ end }}
 
 # Unbind copy mode bindings
 unbind -T copy-mode-vi Space;
 unbind -T copy-mode-vi Enter;
 
+{{ if (eq .colemak true) }}
 # Vim-like copy mode movement
 bind-key -T copy-mode n send-keys -X cursor-up
 bind-key -T copy-mode e send-keys -X cursor-down
 bind-key -T copy-mode i send-keys -X cursor-left
 bind-key -T copy-mode o send-keys -X cursor-right
+{{ end }}
 
 # Vim-like copy move selection
 bind -T copy-mode-vi v send -X begin-selection 2> /dev/null || true
@@ -49,11 +51,13 @@ bind -T copy-mode-vi Escape send -X cancel 2> /dev/null || true
 unbind r
 bind r source-file $XDG_CONFIG_HOME/tmux/tmux.conf \; display "Reloaded tmux.conf"
 
+{{ if (eq .colemak true) }}
 # Pane resizing with NEIO
 bind -r N resize-pane -L 2
 bind -r E resize-pane -D 2
 bind -r I resize-pane -U 2
 bind -r O resize-pane -R 2
+{{ end }}
 
 # Better tab splitting
 unbind '"'

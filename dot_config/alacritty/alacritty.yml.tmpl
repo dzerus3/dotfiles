@@ -25,24 +25,27 @@ mouse:
   hide_when_typing: false
 
 key_bindings:
+{{ if (eq .colemak true) }}
   - { key: N, mods: Control, chars: "\x1b[D" }
   - { key: E, mods: Control, chars: "\x1b[B" }
   - { key: I, mods: Control, chars: "\x1b[A" }
   - { key: O, mods: Control, chars: "\x1b[C" }
   - { key: N, mods: Shift|Control, chars: "\x1b\x62" }
   - { key: O, mods: Shift|Control, chars: "\x1b\x66" }
+{{ end }}
   - { key: LBracket, mods: Control, chars: "\x01" }
   - { key: RBracket, mods: Control, chars: "\x05" }
 
   - { key: Space, mods: Control, mode: ~Search, action: ToggleViMode }
+{{ if (eq .colemak true) }}
   - { key: N, mode: Vi|~Search, action: Left }
   - { key: E, mode: Vi|~Search, action: Down }
   - { key: I, mode: Vi|~Search, action: Up }
   - { key: O, mode: Vi|~Search, action: Right }
+{{ end }}
   - { key: Q, mode: Vi|~Search, action: ToggleViMode }
   - { key: Y, mode: Vi|~Search, action: Copy }
   - { key: Y, mode: Vi|~Search, action: ClearSelection }
-
   - { key: B, mods: Shift, mode: Vi|~Search, action: WordLeftEnd }
   - { key: W, mods: Shift, mode: Vi|~Search, action: WordRightEnd }
 
