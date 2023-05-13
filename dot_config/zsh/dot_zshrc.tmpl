@@ -114,10 +114,10 @@ source $ZDOTDIR/modules/abbreviations.zsh
 # Sets default editor
 if command -v nvim &> /dev/null; then
     export EDITOR='nvim'
-    abbrev editvimrc="$EDITOR $HOME/.config/nvim/init.lua"
+    abbrev editvimrc="chezmoi edit $HOME/.config/nvim/init.lua"
 elif command -v vim &> /dev/null; then
     export EDITOR='vim'
-    abbrev editvimrc="$EDITOR $HOME/.vimrc"
+    abbrev editvimrc="chezmoi edit $HOME/.vimrc"
 elif command -v nano &> /dev/null; then
     export EDITOR='nano'
 fi
@@ -247,7 +247,7 @@ abbrev chez='chezmoi'
 abbrev data='datafiles'
 
 # Easy editing of common files
-abbrev editrc="$EDITOR $HOME/.config/zsh/.zshrc"
+abbrev editrc="chezmoi edit $HOME/.config/zsh/.zshrc"
 
 if command -v task &> /dev/null; then
     abbrev t='task'
