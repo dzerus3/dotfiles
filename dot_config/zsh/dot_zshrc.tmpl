@@ -273,7 +273,7 @@ fi
 
 alias datafiles="git --git-dir=$HOME/.local/share/datafiles --work-tree=$HOME"
 
-alias wget="wget --hsts-file $XDG_CACHE_HOME/wget-hsts"
+alias wget="wget --hsts-file $XDG_STATE_HOME/wget-hsts"
 
 open(){
     nohup xdg-open $1 > /dev/null &
