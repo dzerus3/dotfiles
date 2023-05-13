@@ -20,12 +20,7 @@ set $right o
 set $term alacritty
 
 ## The application launcher menu
-set $menu fuzzel --horizontal-pad=12 --vertical-pad=10 \
-           --terminal="alacritty -e" \
-           --inner-pad=8 \
-           --text-color=c5c8c6ff --selection-text-color=c5c8c6ff \
-           --background=222426f2 --selection-color=373b41f2 \
-           --font="CodeNewRoman NF:size=9,Anonymous Pro:size=9"
+set $menu fuzzel
 
 ## Directory where helper scripts are stored
 set $scripts "$HOME/.local/bin/sway"

@@ -59,12 +59,7 @@ RESULTS=(
 
 WAHL=$(
     printf '%s\n' "${RESULTS[@]}" | \
-    fuzzel --dmenu --lines=10 --width=30 \
-           --horizontal-pad=12 --vertical-pad=10 \
-           --inner-pad=8 \
-           --text-color=c5c8c6ff --selection-text-color=c5c8c6ff \
-           --background=222426f2 --selection-color=373b41f2 \
-           --font="CodeNewRoman NF:size=9,Anonymous Pro:size=9"
+    fuzzel --dmenu --lines=10 --width=30 --layer=overlay
 )
 
 
