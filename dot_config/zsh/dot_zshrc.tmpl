@@ -1,3 +1,4 @@
+# vim: ft=zsh
 {{ if (eq .zshcomp true) }}
 ################################################################
 # Completion
@@ -151,7 +152,7 @@ if command -v zoxide &> /dev/null; then
     # Initializes zoxide
     eval "$(zoxide init --cmd cd zsh)"
     # Excludes files from zoxide completion
-    export _ZO_EXCLUDE_DIRS=$HOME:$XDG_CACHE_HOME/*:$ZDOTDIR/plugins/*
+    export _ZO_EXCLUDE_DIRS=$HOME:$XDG_CACHE_HOME/*:$ZDOTDIR/plugins/*:$HOME/.mozilla/:*/.git/
     export _ZO_DATA_DIR=$XDG_STATE_HOME
 fi
 
@@ -211,6 +212,7 @@ plugin-load woefe/git-prompt.zsh
 # Makes history searching more intelligent
 plugin-load zsh-users/zsh-history-substring-search
 # Enables syntax highlighting in the shell
+# TODO: https://github.com/xero/dotfiles/blob/master/zsh/.zsh/syntax.zsh
 plugin-load zdharma-continuum/fast-syntax-highlighting
 
 # Rebinds up/down to use substring search
@@ -227,6 +229,10 @@ ls   --version | grep GNU > /dev/null && alias ls='ls --color=auto'
 grep --version | grep GNU > /dev/null && alias grep='grep --color=auto'
 diff --version | grep GNU > /dev/null && alias diff='diff --color=auto'
 alias ip='ip --color=auto'
+
+# Makes tree ignore trash directories
+# TODO: Sync with _ZO_EXCLUDE_DIRS
+alias tree="tree -I '.cache|.mozilla|.git'"
 
 {{ if (eq .zshabbr true) }}
 abbrev cls='clear'
@@ -305,6 +311,9 @@ export MANPAGER='less -ix8RmPm'
 # DOCUMENTATION:
 #   $ZDOTDIR/plugins/git-prompt.zsh/examples/default.zsh
 #   man zshmisc /EXPANSION OF PROMPT
+#
+#   TODO: refactor
+#   https://github.com/xero/dotfiles/blob/master/zsh/.zsh/05-prompt.zsh
 ################################################################
 
 # Makes prompt more font-compatible
