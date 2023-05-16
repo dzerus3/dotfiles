@@ -58,9 +58,7 @@ seat seat0 xcursor_theme current 16
 output * bg $HOME/pics/wallpapers/wallpaper.jpg fill
 
 ## Idle configuration
-exec swayidle -w \
-         timeout 900 'swaylock --daemonize -i /usr/share/backgrounds/screensaver.jpg' \
-         timeout 1800 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
+exec swayidle -w timeout 900 'swaylock --daemonize -i $HOME/pics/screensavers/screensaver.jpg' timeout 1800 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
          # This options doesn't work without elogind or systemd
          #before-sleep 'swaylock -e -f -c 000000'
 
@@ -188,15 +186,15 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # Enables floating for certain windows
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="bubble"] floating enable
-for_window [window_role="task_dialog"] floating enable
-for_window [window_role="Preferences"] floating enable
-for_window [window_type="dialog"] floating enable
-for_window [window_type="menu"] floating enable
-for_window [window_role="About"] floating enable
-for_window [class="Wine"] floating enable
-for_window [app_id="lutris"] floating enable
+#for_window [window_role="pop-up"] floating enable
+#for_window [window_role="bubble"] floating enable
+#for_window [window_role="task_dialog"] floating enable
+#for_window [window_role="Preferences"] floating enable
+#for_window [window_type="dialog"] floating enable
+#for_window [window_type="menu"] floating enable
+#for_window [window_role="About"] floating enable
+#for_window [class="Wine"] floating enable
+#for_window [app_id="lutris"] floating enable
 
 # Resizing containers:
 mode "resize" {
