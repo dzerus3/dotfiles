@@ -1,0 +1,32 @@
+README.md
+SOFTWARE.md
+
+{{ if eq .neovim true }}
+.vimrc
+{{ else }}
+.config/nvim/init.lua
+{{ end }}
+
+{{ if ne .terminal "alacritty" }}
+.config/alacritty/alacritty.yml
+{{ end }}
+{{ if ne .terminal "kitty" }}
+.config/kitty/kitty.conf
+{{ end }}
+{{ if ne .terminal "foot" }}
+.config/foot/foot.ini
+{{ end }}
+
+{{ if ne .tmux true }}
+.config/tmux/tmux.conf
+{{ end }}
+
+{{ if ne .graphical true }}
+.config/fuzzel
+.config/sway
+.config/waybar
+.config/xkb
+.config/zathura
+.local/bin/sway
+.profile
+{{ end }}

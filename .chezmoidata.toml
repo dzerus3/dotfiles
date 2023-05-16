@@ -8,16 +8,19 @@ zshcomp = true
 # Whether to enable zsh abbeviations
 zshabbr = true
 
+# Whether to use exclusively neovim
+neovim = true
+# Whether to include tmux config
+tmux = true
+# Which terminal emulator to use
+terminal = "alacritty"
+# Whether this machine needs to use a GUI
+graphical = true
+
 # TODO
 # Whether this machine is a laptop (tries to reduce power consumption)
 laptop = true
-# Whether this machine needs to use a GUI
-graphical = true
 # Whether you're using a tiling WM (changes terminal emulator)
 sway = true
-# Whether to use exclusively neovim
-neovim = true
 # What app should be used for MANPAGER (less, most, or nvim)
 manpager = "less"
-# Whether to include configs for programs I no longer use
-legacy = false
