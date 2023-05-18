@@ -11,7 +11,7 @@ zshabbr = true
 # Whether to use exclusively neovim
 neovim = true
 # Whether to include tmux config
-tmux = true
+tmux = false
 # Which terminal emulator to use
 terminal = "alacritty"
 # Whether this machine needs to use a GUI
