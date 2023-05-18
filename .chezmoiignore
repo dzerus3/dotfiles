@@ -8,21 +8,21 @@ SOFTWARE.md
 {{ end }}
 
 {{ if ne .terminal "alacritty" }}
-.config/alacritty/alacritty.yml
+.config/alacritty/
 {{ end }}
 {{ if ne .terminal "kitty" }}
-.config/kitty/kitty.conf
+.config/kitty/
 {{ end }}
 {{ if ne .terminal "foot" }}
-.config/foot/foot.ini
+.config/foot/
 {{ end }}
 
 {{ if ne .graphical true }}
-.config/fuzzel
-.config/sway
-.config/waybar
-.config/xkb
-.config/zathura
-.local/bin/sway
+.config/fuzzel/
+.config/sway/
+.config/waybar/
+.config/xkb/
+.config/zathura/
+.local/bin/sway/
 .profile
 {{ end }}
