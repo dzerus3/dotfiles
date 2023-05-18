@@ -9,7 +9,7 @@ zshcomp = true
 zshabbr = true
 
 # Whether to automatically start tmux with zsh
-tmux = true
+tmux = false
 
 # Whether to use exclusively neovim
 neovim = true
