@@ -63,8 +63,8 @@ bind -r O resize-pane -R 2
 # Better tab splitting
 unbind '"'
 unbind %
-bind -n M-x split-window -v -c "#{pane_current_path}"
-bind -n M-z split-window -h -c "#{pane_current_path}"
+bind -n M-z split-window -v -c "#{pane_current_path}"
+bind -n M-x split-window -h -c "#{pane_current_path}"
 
 # Opening new windows
 bind -n M-r command-prompt "rename-window '%%'"
