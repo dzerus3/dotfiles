@@ -8,10 +8,11 @@ zshcomp = true
 # Whether to enable zsh abbeviations
 zshabbr = true
 
+# Whether to automatically start tmux with zsh
+tmux = true
+
 # Whether to use exclusively neovim
 neovim = true
-# Whether to include tmux config
-tmux = false
 # Which terminal emulator to use
 terminal = "alacritty"
 # Whether this machine needs to use a GUI

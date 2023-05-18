@@ -17,10 +17,6 @@ SOFTWARE.md
 .config/foot/foot.ini
 {{ end }}
 
-{{ if ne .tmux true }}
-.config/tmux/tmux.conf
-{{ end }}
-
 {{ if ne .graphical true }}
 .config/fuzzel
 .config/sway
