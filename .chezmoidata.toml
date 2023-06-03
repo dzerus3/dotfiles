@@ -14,15 +14,16 @@ tmux = false
 # Whether to use exclusively neovim
 neovim = true
 # Which terminal emulator to use
-terminal = "alacritty"
+term = "alacritty"
 # Whether this machine needs to use a GUI
 graphical = true
 
 # What app should be used for MANPAGER (less, most, or nvim)
 manpager = "less"
 
+# Whether you're using a tiling WM (disables kitty window decorations)
+tiling = true
+
 # TODO
 # Whether this machine is a laptop (tries to reduce power consumption)
 laptop = true
-# Whether you're using a tiling WM (changes terminal emulator)
-sway = true

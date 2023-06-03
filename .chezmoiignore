@@ -7,13 +7,13 @@ SOFTWARE.md
 .config/nvim/init.lua
 {{ end }}
 
-{{ if ne .terminal "alacritty" }}
+{{ if ne .term "alacritty" }}
 .config/alacritty/
 {{ end }}
-{{ if ne .terminal "kitty" }}
+{{ if ne .term "kitty" }}
 .config/kitty/
 {{ end }}
-{{ if ne .terminal "foot" }}
+{{ if ne .term "foot" }}
 .config/foot/
 {{ end }}
 
@@ -29,4 +29,8 @@ SOFTWARE.md
 .config/zathura/
 .local/bin/sway/
 .profile
+{{ end }}
+
+{{ if ne .colemak true }}
+.config/xkb/
 {{ end }}

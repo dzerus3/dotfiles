@@ -21,7 +21,9 @@ select_by_word_characters *?-.[]~:;!#$%^(){}<>
 
 enable_audio_bell yes
 window_alert_on_bell yes
+{{ if (eq .tiling true) }}
 hide_window_decorations yes
+{{ end }}
 
 open_url_with qutebrowser
 
