@@ -17,6 +17,10 @@ SOFTWARE.md
 .config/foot/
 {{ end }}
 
+{{ if ne .manpager "most" }}
+.config/mostkey
+{{ end }}
+
 {{ if ne .graphical true }}
 .config/fuzzel/
 .config/sway/

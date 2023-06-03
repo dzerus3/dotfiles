@@ -1,0 +1,23 @@
+unsetkey "h"
+unsetkey "H"
+unsetkey "m"
+unsetkey " "
+
+setkey down "e"
+setkey page_down "E"
+setkey up "i"
+setkey page_up "I"
+
+setkey page_left "n"
+setkey page_left "o"
+
+setkey find_next "h"
+setkey find_next "H"
+
+setkey exit "q"
+setkey exit ":q"
+
+setkey next_file ":n"
+
+setkey set_mark "m"
+setkey goto_mark "'"

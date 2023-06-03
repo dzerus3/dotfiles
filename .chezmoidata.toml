@@ -18,10 +18,11 @@ terminal = "alacritty"
 # Whether this machine needs to use a GUI
 graphical = true
 
+# What app should be used for MANPAGER (less, most, or nvim)
+manpager = "less"
+
 # TODO
 # Whether this machine is a laptop (tries to reduce power consumption)
 laptop = true
 # Whether you're using a tiling WM (changes terminal emulator)
 sway = true
-# What app should be used for MANPAGER (less, most, or nvim)
-manpager = "less"

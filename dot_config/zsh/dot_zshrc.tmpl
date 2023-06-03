@@ -303,7 +303,15 @@ export LESSHISTFILE=-
 
 # Enable less color support
 export LESS='-ix8RmPm'
+
+# Sets pager for man
+{{ if (eq .manpager "most") }}
+export MANPAGER='most'
+{{ else if (eq .manpager "nvim") }}
+export MANPAGER='nvim +Man!'
+{{ else }}
 export MANPAGER='less -ix8RmPm'
+{{ end }}
 
 ################################################################
 # Prompt
