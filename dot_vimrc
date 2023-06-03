@@ -170,7 +170,7 @@ set expandtab
 " Disables netrw (file manager; runs when you open a directory)
 let g:loaded_netrw       = 1
 let g:loaded_netrwPlugin = 1
-
+{{ if (eq .colemak true) }}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colemak remappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -203,13 +203,34 @@ noremap gO <nop>
 noremap k o
 noremap K O
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Custom mappings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Lower case j joins lines
+noremap j J
+
+" Hack to work around conflict with `d`elete `i`n
+nnoremap di dk
+nnoremap dd dd
+
+" Easy window switching
+noremap <leader>n :wincmd h<CR>
+noremap <leader>e :wincmd j<CR>
+noremap <leader>i :wincmd k<CR>
+noremap <leader>o :wincmd l<CR>
 
 " ze and zi move cursor to top/bottom of visible screen
 noremap ze L
 noremap zi H
+
+" Creating newline without insert mode
+noremap <C-k> o<Esc>o
+noremap <C-S-K> O<Esc>O
+
+" Movement between previous motions
+noremap <C-H> <C-O>
+noremap <C-S-H> <C-I>
+{{ end }}
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Custom mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " W and B move to beginning/end of word inclusive
 noremap W e
@@ -218,9 +239,6 @@ noremap B gE
 " E and I function like PageUp/Down
 noremap E <C-f>
 noremap I <C-b>
-
-" Lower case j joins lines
-noremap j J
 
 " Leader-action to delete without copying
 noremap <leader>x \"_x
@@ -239,26 +257,8 @@ noremap <leader>d \"_d
 noremap <leader>D \"_D
 vnoremap <leader>d \"_d
 
-" Hack to work around conflict with `d`elete `i`n
-nnoremap di dk
-nnoremap dd dd
-
 " Enter clears toggles highlighting
 noremap <CR> :set hlsearch!<CR>
-
-" Easy window switching
-noremap <leader>n :wincmd h<CR>
-noremap <leader>e :wincmd j<CR>
-noremap <leader>i :wincmd k<CR>
-noremap <leader>o :wincmd l<CR>
-
-" Creating newline without insert mode
-noremap <C-k> o<Esc>o
-noremap <C-S-K> O<Esc>O
-
-" Movement between previous motions
-noremap <C-H> <C-O>
-noremap <C-S-H> <C-I>
 
 " <leader>l toggles line numbers
 nnoremap <leader>l :set number!<CR>

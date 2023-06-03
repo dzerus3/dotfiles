@@ -4,6 +4,7 @@
 
 # Remove some defaults
 map c
+#{ if (eq .colemak true) }}
 map h
 map j
 map k
@@ -12,13 +13,13 @@ map H
 map J
 map K
 map L
-
 # Movement
 ## Basic movement
 map n updir
 map e down
 map i up
 map o open
+#{ end }}
 
 ## Marks
 #m: Create new mark
@@ -35,9 +36,15 @@ map o open
 #map <c-e> scroll-down
 #map <c-i> scroll-up
 
+#{ if (eq .colemak true) }}
 ## Moves up and down a whole page
 map E page-down
 map I page-up
+#{ else }}
+## Moves up and down a whole page
+map J page-down
+map K page-up
+#{ end }}
 
 #gg moves to top of directory
 #G  moves to bottom of directory
@@ -52,9 +59,11 @@ map ld push %mkdir<space>
 map lD newfold
 map lp chmod
 
+#{ if (eq .colemak true) }}
 # File manipulation
 ## Opens file in EDITOR
 map k $$EDITOR "$f"
+#{ end }}
 
 map r rename
 map R batch_rename
@@ -99,9 +108,11 @@ map aU unarchivefiles
 map b glob-select
 map B glob-unselect
 
+#{ if (eq .colemak true) }}
 ## Search
 map h search-next
 map H search-next
+#{ end }}
 
 set previewer "/home/aleksei/.config/lf/bat-preview.sh"
 

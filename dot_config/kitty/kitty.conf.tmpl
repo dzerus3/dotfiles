@@ -140,7 +140,7 @@ mouse_map ctrl+left triplepress ungrabbed mouse_selection line_from_point
 # https://developer.run/36
 # https://wiki.bash-hackers.org/scripting/terminalcodes in comments
 # https://sw.kovidgoyal.net/kitty/conf/#shortcut-kitty.Send-arbitrary-text-on-key-presses
-
+{{ if (eq .colemak true) }}
 # Ctrl + n/e/i/o mapped to arrows
 map ctrl+n send_text all \x1b[D
 map ctrl+e send_text all \x1b[B
@@ -150,7 +150,7 @@ map ctrl+o send_text all \x1b[C
 # Ctrl + shift + n/o move horizontally by word
 map ctrl+shift+n send_text all \x1b\x62
 map ctrl+shift+o send_text all \x1b\x66
-
+{{ end }}
 # Ctrl + square brackets moves to beginning/end of line
 map ctrl+[ send_text all \x01
 map ctrl+] send_text all \x05
@@ -201,7 +201,7 @@ enabled_layouts splits
 map alt+z launch --location=hsplit
 map alt+x launch --location=vsplit
 map alt+w close_window
-
+{{ if (eq .colemak true) }}
 map alt+n neighboring_window left
 map alt+e neighboring_window down
 map alt+i neighboring_window up
@@ -211,3 +211,4 @@ map kitty_mod+n move_window left
 map kitty_mod+e move_window down
 map kitty_mod+i move_window up
 map kitty_mod+o move_window right
+{{ end }}

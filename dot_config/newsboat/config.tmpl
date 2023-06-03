@@ -1,3 +1,4 @@
+# set ft=conf
 # Thanks to https://forums.freebsd.org/threads/newsboat-rss-reader-enable-vim-key-bindings.69448/
 
 # Reload feeds on startup
@@ -11,7 +12,7 @@ browser /usr/bin/lynx
 macro m set browser "setsid -f mpv --really-quiet --no-terminal" ; open-in-browser ; set browser lynx
 # Open link with firefox
 macro l set browser "firefox-bin %u"; open-in-browser ; set browser "lynx %u"
-
+{{ if (eq .colemak true) }}
 # Unbinds neio keys
 unbind-key ENTER
 unbind-key n
@@ -32,7 +33,7 @@ bind-key I prev
 # l opens article in browser
 unbind-key l
 bind-key l open-in-browser-and-mark-read
-
+{{ end }}
 # Bookmarking now bound to Ctrl + d
 unbind-key ^B
 unbind-key ^D

@@ -1,6 +1,6 @@
 bind q mixer close
 bind 0 mixer control_set_100
-
+{{ if (eq .colemak true) }}
 bind n textbox left
 bind e textbox down
 bind i textbox up
@@ -13,6 +13,19 @@ bind n mixer previous
 bind o mixer next
 
 bind l mixer select_card
+{{ else }}
+bind j textbox left
+bind k textbox down
+bind l textbox up
+bind ; textbox right
 
+bind k mixer control_down_5
+bind l mixer control_up_5
+
+bind j mixer previous
+bind ; mixer next
+
+bind i mixer select_card
+{{ end }}
 color menu white black bold
 color menu_selected white black reverse

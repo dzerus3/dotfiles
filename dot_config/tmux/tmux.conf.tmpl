@@ -1,3 +1,5 @@
+# vim: ft=tmux
+
 # Rebinding prefix to Alt + q
 unbind C-b
 set-option -g prefix M-q
@@ -28,18 +30,29 @@ bind -n M-n "select-pane -L"
 bind -n M-e "select-pane -D"
 bind -n M-i "select-pane -U"
 bind -n M-o "select-pane -R"
+{{ else }}
+# Alt + jkl; move around panes
+bind -n M-j "select-pane -L"
+bind -n M-k "select-pane -D"
+bind -n M-l "select-pane -U"
+bind -n M-; "select-pane -R"
 {{ end }}
 
 # Unbind copy mode bindings
 unbind -T copy-mode-vi Space;
 unbind -T copy-mode-vi Enter;
 
-{{ if (eq .colemak true) }}
 # Vim-like copy mode movement
+{{ if (eq .colemak true) }}
 bind-key -T copy-mode n send-keys -X cursor-up
 bind-key -T copy-mode e send-keys -X cursor-down
 bind-key -T copy-mode i send-keys -X cursor-left
 bind-key -T copy-mode o send-keys -X cursor-right
+{{ else }}
+bind-key -T copy-mode j send-keys -X cursor-up
+bind-key -T copy-mode k send-keys -X cursor-down
+bind-key -T copy-mode l send-keys -X cursor-left
+bind-key -T copy-mode ; send-keys -X cursor-right
 {{ end }}
 
 # Vim-like copy move selection
@@ -52,12 +65,17 @@ bind -T copy-mode-vi Escape send -X cancel 2> /dev/null || true
 unbind r
 bind r source-file $XDG_CONFIG_HOME/tmux/tmux.conf \; display "Reloaded tmux.conf"
 
+# Pane resizing
 {{ if (eq .colemak true) }}
-# Pane resizing with NEIO
 bind -r N resize-pane -L 2
 bind -r E resize-pane -D 2
 bind -r I resize-pane -U 2
 bind -r O resize-pane -R 2
+{{ else }}
+bind -r J resize-pane -L 2
+bind -r K resize-pane -D 2
+bind -r L resize-pane -U 2
+bind -r ; resize-pane -R 2
 {{ end }}
 
 # Better tab splitting

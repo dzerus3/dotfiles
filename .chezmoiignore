@@ -33,4 +33,5 @@ SOFTWARE.md
 
 {{ if ne .colemak true }}
 .config/xkb/
+.config/lesskey
 {{ end }}

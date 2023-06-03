@@ -1,3 +1,4 @@
+# vim: ft=swayconfig
 # Dependencies
 ## A cursor theme called "current"
 ## alacritty (Terminal Emulator)
@@ -11,10 +12,17 @@
 set $mod Mod4
 
 ## Home row direction keys, like vim
+{{ if (eq .colemak true) }}
 set $left n
 set $down e
 set $up i
 set $right o
+{{ else }}
+set $left j
+set $down k
+set $up l
+set $right ;
+{{ end }}
 
 ## Preferred terminal emulator
 set $term alacritty
@@ -170,10 +178,17 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+z splitv
 bindsym $mod+x splith
 
+{{ if (eq .colemak true) }}
 ### Move focus to the parent container
 bindsym $mod+j focus parent
 ### Switch the current container between different layout styles
 bindsym $mod+l layout toggle split
+{{ else }}
+### Move focus to the parent container
+bindsym $mod+i focus parent
+### Switch the current container between different layout styles
+bindsym $mod+o layout toggle split
+{{ end }}
 bindsym $mod+u layout stacking
 bindsym $mod+y layout tabbed
 
