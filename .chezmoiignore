@@ -17,10 +17,6 @@ SOFTWARE.md
 .config/foot/
 {{ end }}
 
-{{ if ne .manpager "most" }}
-.config/mostkey
-{{ end }}
-
 {{ if ne .graphical true }}
 .config/fuzzel/
 .config/sway/
@@ -34,4 +30,5 @@ SOFTWARE.md
 {{ if ne .colemak true }}
 .config/xkb/
 .config/lesskey
+.config/mostkey
 {{ end }}
