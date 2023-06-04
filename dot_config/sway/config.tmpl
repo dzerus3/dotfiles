@@ -25,7 +25,13 @@ set $right ;
 {{ end }}
 
 ## Preferred terminal emulator
+{{ if (eq .term "alacritty")}}
 set $term alacritty
+{{ else if (eq .term "kitty")}}
+set $term kitty
+{{ else }}
+set $term foot
+{{ end }}
 
 ## The application launcher menu
 set $menu fuzzel

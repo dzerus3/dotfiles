@@ -1,5 +1,13 @@
+# vim: ft=toml
+
 # Default terminal for terminal apps
+{{ if eq .term "alacritty" }}
 terminal=alacritty -e
+{{ else if eq .term "kitty" }}
+terminal=kitty -e
+{{ else if eq .term "foot" }}
+terminal=foot -e
+{{ end }}
 # Padding between prompt and list of matches
 inner-pad=8
 # List of preferred fonts

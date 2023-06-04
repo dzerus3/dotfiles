@@ -107,8 +107,16 @@
     "wireplumber": {
         "format": "{volume}% {icon}",
         "format-muted": "",
+        {{ if (eq .term "alacritty") }}
         "on-click": "alacritty -e alsamixer",
         "on-click-right": "alacritty -e alsamixer",
+        {{ else if eq .term "kitty" }}
+        "on-click": "kitty -e alsamixer",
+        "on-click-right": "kitty -e alsamixer",
+        {{ else if eq .term "foot" }}
+        "on-click": "foot -e alsamixer",
+        "on-click-right": "foot -e alsamixer",
+        {{ end }}
         "format-icons": ["", "", ""]
     },
 
