@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=ytfzf (no video)
+GenericName=Youtube scraper
+Comment=fzf-based YouTube searcher
+Exec=/usr/bin/ytfzf --url-handler-opts="--no-video"
+Terminal=true

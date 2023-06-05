@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Newsboat
+GenericName=RSS Feed Viewer
+Comment=RSS Feed Viewer
+Exec=/usr/bin/newsboat
+Terminal=true

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=ytfzf
+GenericName=Youtube scraper
+Comment=fzf-based YouTube searcher
+Exec=/usr/bin/ytfzf
+Terminal=true

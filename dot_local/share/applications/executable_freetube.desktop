@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Freetube
+GenericName=Youtube client
+Comment=Watch Youtube video in privacy
+Exec=/usr/bin/freetube --ozone-platform=wayland
+Terminal=false
+X-Desktop-File-Install-Version=0.26

@@ -24,6 +24,7 @@ SOFTWARE.md
 .config/xkb/
 .config/zathura/
 .local/bin/sway/
+.local/share/applications/
 .profile
 {{ end }}
 
