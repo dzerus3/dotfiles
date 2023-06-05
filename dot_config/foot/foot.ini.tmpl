@@ -1,5 +1,6 @@
+# vim: ft=toml
 [main]
-font=AnonymousPro:size=12
+font={{ .termfont }}:size=12
 word-delimiters=*?-.[]~:;!#$%^(){}<>
 
 [scrollback]
@@ -77,8 +78,8 @@ extend-to-word-boundary=none
 delete-prev-word=Control+w
 
 [text-bindings]
-# Move by character
 {{ if (eq .colemak true) }}
+# Move by character
 \x1b[D=Control+n
 \x1b[B=Control+e
 \x1b[A=Control+i

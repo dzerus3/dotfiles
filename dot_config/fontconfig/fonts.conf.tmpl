@@ -1,0 +1,22 @@
+<!-- vim: ft=xml
+-->
+<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+    <alias>
+        <family>serif</family>
+        <prefer><family>{{ .normfont }}</family></prefer>
+    </alias>
+    <alias>
+        <family>sans-serif</family>
+        <prefer><family>{{ .normfont }}</family></prefer>
+    </alias>
+    <alias>
+        <family>sans</family>
+        <prefer><family>{{ .normfont }}</family></prefer>
+    </alias>
+    <alias>
+        <family>monospace</family>
+        <prefer><family>{{ .normfont }}</family></prefer>
+    </alias>
+</fontconfig>

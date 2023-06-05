@@ -1,0 +1,20 @@
+# vim: ft=toml
+{{ if (eq .fonts true) }}
+[".local/share/fonts/anonymous-pro"]
+    type = "archive"
+    url = "https://www.marksimonson.com/assets/content/fonts/AnonymousPro-1_002.zip"
+    exact = true
+    stripComponents = 1
+[".local/share/fonts/code-new-roman"]
+    type = "archive"
+    url = "https://fontlibrary.org/assets/downloads/code-new-roman/2a82f29eedcdfe52fc23336e2e30ac22/code-new-roman.zip"
+    exact = true
+[".local/share/fonts/pt-serif"]
+    type = "archive"
+    url = "https://www.fontsquirrel.com/fonts/download/pt-serif"
+    exact = true
+[".local/share/fonts/nerd-font-symbols"]
+    type = "archive"
+    url = "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/NerdFontsSymbolsOnly.zip"
+    exact = true
+{{ end }}
