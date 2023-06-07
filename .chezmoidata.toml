@@ -33,6 +33,9 @@ deskfont = "CodeNewRoman"
 # Font to use for everything else
 normfont = "PT Serif"
 
+# Whether to include encrypted config files
+cryptdata = false
+
 # TODO
 # Whether this machine is a laptop (tries to reduce power consumption)
 laptop = true
