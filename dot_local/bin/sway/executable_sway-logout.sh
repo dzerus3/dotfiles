@@ -18,7 +18,7 @@ selection=$(
 # Note: User needs permission in /etc/doas.conf
 case "$selection" in
     "✱  Lock")     swaylock --daemonize -i $HOME/pics/screensavers/screensaver.jpg ;;
-    "⍈  Logout")   swaymsg exit ;;
+    "⍈  Logout")   wayland-logout ;;
     "⏾  Suspend")  swaylock --daemonize -i $HOME/pics/screensavers/screensaver.jpg && doas -n s2ram          ;;
     "⏻  Shutdown") doas -n shutdown -h now ;;
     "↻  Reboot")   doas -n shutdown -r now ;;
