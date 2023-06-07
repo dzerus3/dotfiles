@@ -72,15 +72,17 @@ seat seat0 xcursor_theme current 16
 output * bg $HOME/pics/wallpapers/wallpaper.jpg fill
 
 ## Idle configuration
-exec swayidle -w timeout 900 'swaylock --daemonize -i $HOME/pics/screensavers/screensaver.jpg' timeout 1800 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
-         # This options doesn't work without elogind or systemd
-         #before-sleep 'swaylock -e -f -c 000000'
+exec swayidle -w
+    \ timeout 900 'swaylock --daemonize -i $HOME/pics/screensavers/screensaver.jpg'
+    \ timeout 1800 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
 
 ## Keyboard configuration
 input type:keyboard {
     xkb_layout  "custom,custom"
     xkb_variant "colemak_dh,rulemak_dh"
     xkb_options "caps:swapescape,grp:shifts_toggle"
+    repeat_delay 400
+    repeat_rate 40
 }
 
 # Key bindings
