@@ -33,11 +33,3 @@ SOFTWARE.md
 .config/lesskey
 .config/mostkey
 {{ end }}
-
-{{ if ne .cryptdata true }}
-.config/newsboat/urls
-.local/share/CAD-coresettings.json
-.local/share/CAD-expressions.json
-.local/share/noscript.txt
-.local/share/ubo.txt
-{{ end }}
