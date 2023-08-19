@@ -27,9 +27,9 @@ tiling = true
 # Whether to download my preferred fonts
 fonts = true
 # Font to use for terminal emulators
-termfont = "AnonymousPro"
+termfont = "AnonymicePro Nerd Font Mono"
 # Font to use for desktop
-deskfont = "CodeNewRoman"
+deskfont = "CodeNewRoman Nerd Font Mono"
 # Font to use for everything else
 normfont = "PT Serif"
 
