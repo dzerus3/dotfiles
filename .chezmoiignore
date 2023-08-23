@@ -25,6 +25,7 @@ SOFTWARE.md
 .config/zathura/
 .local/bin/sway/
 .local/share/applications/
+pics/
 .profile
 {{ end }}
 
