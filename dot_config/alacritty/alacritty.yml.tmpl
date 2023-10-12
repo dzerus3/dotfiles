@@ -42,6 +42,9 @@ key_bindings:
   - { key: E, mode: Vi|~Search, action: Down }
   - { key: I, mode: Vi|~Search, action: Up }
   - { key: O, mode: Vi|~Search, action: Right }
+
+  - { key: H, mods: Control, mode: Search, action: SearchFocusNext }
+  - { key: H, mods: Shift|Control, mode: Search, action: SearchFocusPrevious }
 {{ end }}
   - { key: Q, mode: Vi|~Search, action: ToggleViMode }
   - { key: Y, mode: Vi|~Search, action: Copy }
