@@ -31,7 +31,7 @@ termfont = "AnonymicePro Nerd Font Mono"
 # Font to use for desktop
 deskfont = "CodeNewRoman Nerd Font Mono"
 # Font to use for everything else
-normfont = "PT Serif"
+normfont = "Questrial"
 
 # TODO
 # Whether this machine is a laptop (tries to reduce power consumption)
