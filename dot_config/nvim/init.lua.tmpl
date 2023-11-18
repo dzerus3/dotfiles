@@ -241,20 +241,20 @@ map("", "l", "i")
 map("", "L", "I")
 map("", "gl", "gi")
 
--- Search result navigation with h
-map("", "h",  "n")
-map("", "H",  "N")
+-- Search result navigation with k
+map("", "k",  "n")
+map("", "K",  "N")
 -- Search forward/backward and select
-map("", "gh", "gn")
-map("", "gH", "gN")
+map("", "gk", "gn")
+map("", "gK", "gN")
 map("", "gn", "")
 map("", "gN", "")
 map("", "go", "")
 map("", "gO", "")
 
--- Insert mode with newline is now on k
-map("", "k", "o")
-map("", "K", "O")
+-- Insert mode with newline is now on h
+map("", "h", "o")
+map("", "H", "O")
 
 -- E and I function like PageUp/Down
 map("", "E", "<C-f>")
@@ -263,23 +263,32 @@ map("", "I", "<C-b>")
 -- Lower case j joins lines
 map("", "j", "J")
 
--- Hack to work around conflict with `d`elete `i`n
-map("n",  "di", "dk")
-map("n",  "dd", "dd")
-
 -- Easy window switching
 map("", "<leader>n", ":wincmd h<CR>")
 map("", "<leader>e", ":wincmd j<CR>")
 map("", "<leader>i", ":wincmd k<CR>")
 map("", "<leader>o", ":wincmd l<CR>")
 
--- Creating newline without insert mode
-map("", "<C-k>",   "o<Esc>o")
-map("", "<C-S-K>", "O<Esc>O")
-
 -- Movement between previous motions
 map("", "<C-H>",   "<C-O>")
 map("", "<C-S-H>", "<C-I>")
+
+-- Hack to work around conflict with `d`elete `i`n
+map("n",  "di", "dk")
+map("n",  "dd", "dd")
+
+-- Rebinds w and f to b and w (for contiguousness)
+map("", "f", "e")
+map("", "F", "E")
+
+-- Rebinds s to f
+map("", "s", "f")
+map("", "S", "F")
+
+-- Rebinds s to leader-c (due to f rebind)
+map("", "<leader>c", "s")
+map("", "<leader>C", "S")
+
 {{ end }}
 
 ---------------------------------------------------------------
@@ -289,10 +298,6 @@ map("", "<C-S-H>", "<C-I>")
 -- ze and zi move cursor to top/bottom of visible screen
 map("", "ze", "L")
 map("", "zi", "H")
-
--- W and B move to beginning/end of word inclusive
-map("", "W", "e")
-map("", "B", "gE")
 
 -- Leader-action to delete without copying
 map("",  "<leader>x", "\"_x")
@@ -324,17 +329,6 @@ map("n", "<leader>a", ":set relativenumber!<CR>:set number!<CR>")
 -- Leader + h allows highlighting `l`ine or `c`olumn
 map("n", "<leader>hl", ":set cursorline!<CR>")
 map("n", "<leader>hc", ":set cursorcolumn!<CR>")
-
--- Disables the arrow keys
-map("", "<Left>",  "")
-map("", "<Down>",  "")
-map("", "<Up>",    "")
-map("", "<Right>", "")
-
-map("i", "<Left>",  "")
-map("i", "<Down>",  "")
-map("i", "<Up>",    "")
-map("i", "<Right>", "")
 
 -- Disables Ctrl + w in insert mode
 map("i", "<C-w>", "")
@@ -378,7 +372,7 @@ then
         colorscheme hybrid
         highlight Search
             \ guifg=#dfdfaf
-            \ guibg=#878787 
+            \ guibg=#878787
             \ gui=NONE
             \ ctermfg=187
             \ ctermbg=102
