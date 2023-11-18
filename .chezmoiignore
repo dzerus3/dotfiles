@@ -17,7 +17,7 @@ SOFTWARE.md
 .config/foot/
 {{ end }}
 
-{{ if ne .graphical true }}
+{{ if ne .tiling true }}
 .config/fuzzel/
 .config/sway/
 .config/waybar/
@@ -27,6 +27,8 @@ SOFTWARE.md
 .local/share/applications/
 pics/
 .profile
+.config/mimeapps.list
+.config/user-dirs.dirs
 {{ end }}
 
 {{ if ne .colemak true }}
