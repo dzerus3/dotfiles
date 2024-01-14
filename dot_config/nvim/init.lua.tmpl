@@ -241,6 +241,13 @@ map("", "l", "i")
 map("", "L", "I")
 map("", "gl", "gi")
 
+-- Hack to work around conflict with `d`elete `i`n
+map("n",  "yi", "yk")
+map("n",  "vi", "vk")
+map("n",  "di", "dk")
+map("n",  "ci", "ck")
+map("n",  "dd", "dd")
+
 -- Search result navigation with k
 map("", "k",  "n")
 map("", "K",  "N")
@@ -272,10 +279,6 @@ map("", "<leader>o", ":wincmd l<CR>")
 -- Movement between previous motions
 map("", "<C-H>",   "<C-O>")
 map("", "<C-S-H>", "<C-I>")
-
--- Hack to work around conflict with `d`elete `i`n
-map("n",  "di", "dk")
-map("n",  "dd", "dd")
 
 -- Rebinds w and f to b and w (for contiguousness)
 map("", "f", "e")
