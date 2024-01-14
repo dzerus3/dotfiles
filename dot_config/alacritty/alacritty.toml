@@ -1,0 +1,180 @@
+[colors.bright]
+black = "0x666666"
+blue = "0x7aa6da"
+cyan = "0x54ced6"
+green = "0x9ec400"
+magenta = "0xe07de0"
+red = "0xff3334"
+white = "0xbababa"
+yellow = "0xe7c547"
+
+[colors.normal]
+black = "0x0b0b0b"
+blue = "0x7aa6da"
+cyan = "0x70c0ba"
+green = "0xb9ca4a"
+magenta = "0x9161a8"
+red = "0xd54e53"
+white = "0x424242"
+yellow = "0xe6c547"
+
+[colors.primary]
+background = "0x070707"
+foreground = "0xeaeaea"
+
+[cursor]
+vi_mode_style = "Block"
+
+[cursor.style]
+blinking = "Off"
+shape = "Beam"
+
+[font]
+size = 11
+
+[font.bold]
+family = "AnonymicePro Nerd Font Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "AnonymicePro Nerd Font Mono"
+style = "Bold Italic"
+
+[font.italic]
+family = "AnonymicePro Nerd Font Mono"
+style = "Italic"
+
+[font.normal]
+family = "AnonymicePro Nerd Font Mono"
+style = "Regular"
+
+[[keyboard.bindings]]
+chars = "\u001B[D"
+key = "N"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[B"
+key = "E"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[A"
+key = "I"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[C"
+key = "O"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001Bb"
+key = "N"
+mods = "Shift|Control"
+
+[[keyboard.bindings]]
+chars = "\u001Bf"
+key = "O"
+mods = "Shift|Control"
+
+[[keyboard.bindings]]
+chars = "\u0001"
+key = "LBracket"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u0005"
+key = "RBracket"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "Space"
+mode = "~Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "Left"
+key = "N"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "Down"
+key = "E"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "Up"
+key = "I"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "Right"
+key = "O"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "SearchFocusNext"
+key = "H"
+mode = "Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "SearchFocusPrevious"
+key = "H"
+mode = "Search"
+mods = "Shift|Control"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "Q"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "Y"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "ClearSelection"
+key = "Y"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "WordLeftEnd"
+key = "B"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "WordRightEnd"
+key = "W"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollLineUp"
+key = "Comma"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ScrollLineDown"
+key = "Period"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ScrollPageUp"
+key = "Comma"
+mods = "Control|Alt"
+
+[[keyboard.bindings]]
+action = "ScrollPageDown"
+key = "Period"
+mods = "Control|Alt"
+
+[mouse]
+hide_when_typing = false
+
+[scrolling]
+history = 50000
