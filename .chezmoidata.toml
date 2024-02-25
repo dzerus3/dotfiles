@@ -1,5 +1,5 @@
 # Whether to install zsh and neovim plugins
-plugins = true
+plugins = false
 # Whether to enable colemak rebinds
 colemak = true
 
@@ -11,19 +11,14 @@ zshabbr = true
 # Whether to automatically start tmux with zsh
 tmux = false
 
-# Whether to use exclusively neovim
+# Whether to use neovim as EDITOR
 neovim = true
-# Which terminal emulator to use
-term = "alacritty"
 
 # What app should be used for MANPAGER (less, most, or nvim)
 manpager = "less"
 
-# Whether you're using a tiling WM (disable if using KDE or headless)
-tiling = true
-
 # Whether to download my preferred fonts
-fonts = true
+fonts = false
 # Font to use for terminal emulators
 termfont = "AnonymicePro Nerd Font Mono"
 # Font to use for desktop
@@ -31,6 +26,9 @@ deskfont = "CodeNewRoman Nerd Font Mono"
 # Font to use for everything else
 normfont = "Questrial"
 
-# TODO
-# Whether this machine is a laptop (tries to reduce power consumption)
-laptop = true
+# Whether to use a desktop
+graphical = false
+# Whether to use sway
+sway = false
+# Which terminal emulator to use
+term = ""

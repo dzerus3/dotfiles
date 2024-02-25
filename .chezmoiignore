@@ -17,22 +17,23 @@ SOFTWARE.md
 .config/foot/
 {{ end }}
 
-{{ if ne .tiling true }}
+{{ if ne .graphical true }}
+.config/zathura/
+.local/share/applications/
+pics/
+.config/mimeapps.list
+.config/fontconfig
+{{ end }}
+
+{{ if ne .sway true }}
 .config/fuzzel/
 .config/sway/
 .config/waybar/
 .config/xkb/
-.config/zathura/
 .local/bin/sway/
-.local/share/applications/
-pics/
-.profile
-.config/mimeapps.list
-.config/user-dirs.dirs
 {{ end }}
 
 {{ if ne .colemak true }}
 .config/xkb/
 .config/lesskey
-.config/mostkey
 {{ end }}

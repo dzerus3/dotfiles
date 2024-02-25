@@ -149,8 +149,11 @@ export CARGO_INSTALL_ROOT=$HOME/.local
 # Includes some characters as parts of words for Ctrl + w
 local WORDCHARS=-$'*?.[]~;!#$%^(){}<>'
 
+# Sets wget to keep history in .local/state
+alias wget="wget --hsts-file $XDG_STATE_HOME/wget-hsts"
+
+# Initializes zoxide
 if command -v zoxide &> /dev/null; then
-    # Initializes zoxide
     eval "$(zoxide init --cmd cd zsh)"
     # Excludes files from zoxide completion
     export _ZO_EXCLUDE_DIRS=$HOME:$XDG_CACHE_HOME/*:$ZDOTDIR/plugins/*:$HOME/.mozilla/:*/.git/
@@ -247,16 +250,8 @@ abbrev lla='ls -la'
 abbrev lld='ls -ld'
 abbrev ldl='ls -dl'
 
-if command -v nvim &> /dev/null; then
-    abbrev nv='nvim'
-fi
-
 # Dotfile configuration
 abbrev chez='chezmoi'
-abbrev data='datafiles'
-
-# Easy editing of common files
-abbrev editrc="chezmoi edit $HOME/.config/zsh/.zshrc"
 
 if command -v task &> /dev/null; then
     abbrev t='task'
@@ -271,26 +266,7 @@ if command -v buku &> /dev/null; then
     abbrev ba='buku --add'
     abbrev buku-backup='buku -e ~/.local/share/buku/bookmarks.md'
 fi
-
-if command -v yt-dlp &> /dev/null; then
-    abbrev yt-music='yt-dlp --extract-audio --audio-format opus --yes-playlist -o "%(track)s__%(artist)s__%(album)s__%(release_year)s.%(ext)s"'
-    abbrev yt-audiobook='yt-dlp --extract-audio --audio-format mp3 --yes-playlist -o "%(title)s.%(ext)s"'
-fi
 {{ end }}
-
-alias datafiles="git --git-dir=$HOME/.local/share/datafiles --work-tree=$HOME"
-
-alias wget="wget --hsts-file $XDG_STATE_HOME/wget-hsts"
-
-open(){
-    nohup xdg-open $1 > /dev/null &
-}
-
-isitup() {
-    # I'm not sure why the lookaround is included in the results,
-    # but hey, it works.
-    curl -s "https://isitup.org/$1" | grep -P '(?<=<title>).*(?=<\/title>)' | cut -c 8- | rev | cut -c 9- | rev
-}
 
 ################################################################
 # less configuration
@@ -306,6 +282,7 @@ export LESSHISTFILE=-
 export LESS='-ix8RmPm'
 
 # Sets pager for man
+# TODO: Check for nvimpager?
 {{ if (eq .manpager "most") }}
 export MANPAGER='most'
 {{ else if (eq .manpager "nvim") }}
