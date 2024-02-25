@@ -30,6 +30,7 @@ pics/
 .config/sway/
 .config/waybar/
 .config/xkb/
+.config/mimeapps.list
 .local/bin/sway/
 {{ end }}
 
