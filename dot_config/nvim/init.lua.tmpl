@@ -349,7 +349,7 @@ vim.cmd([[
     iabbrev lenny_ ( ͡° ͜ʖ ͡°)
 ]])
 
-{{ if (and (ne .chezmoi.username "root") (eq .plugins true)) }}
+{{ if (and (ne .chezmoi.username "root") (eq .nvimplugins true)) }}
 ---------------------------------------------------------------
 -- Plugin configuration
 --
@@ -404,30 +404,6 @@ then
     ]])
 
     ---------------------------------------------------------------
-    -- Telescope
-    ---------------------------------------------------------------
-
-    map("n", "<leader>ff", "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>")
-    map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
-    map("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
-
-    ---------------------------------------------------------------
-    -- Tagbar
-    ---------------------------------------------------------------
-
-    -- Start Tagbar
-    vim.cmd "cnoreabbrev TT TagbarToggle"
-
-    -- Allows switching windows without tagbar changing content
-    vim.cmd "cnoreabbrev Z TagbarTogglePause"
-
-    -- Corrects keybinding conflicts within tagbar window
-    -- Discovered with :verbose map
-    vim.g.tagbar_map_togglefold = "['za']"
-    vim.g.tagbar_map_showproto =  "['k']"
-    vim.g.tagbar_map_togglecaseinsensitive = "['l']"
-
-    ---------------------------------------------------------------
     -- Treesitter
     ---------------------------------------------------------------
 
@@ -467,68 +443,6 @@ then
             eol = 'gcA',
         },
     })
-
-    ---------------------------------------------------------------
-    -- Which key
-    ---------------------------------------------------------------
-
-    local wk = require("which-key")
-
-    wk.register({
-        ["n"] = "Left",
-        ["N"] = "Next occurence of char",
-        ["e"] = "Down",
-        ["E"] = "Page down",
-        ["i"] = "Up",
-        ["I"] = "Page up",
-        ["o"] = "Right",
-        ["O"] = "Previous occurence of char",
-        ["B"] = "Previous end of word",
-        ["W"] = "Next end of word",
-        -- ["C-H"] = "Move to location of previous motion",
-        -- ["C-S-H"] = "Move to location of next motion",
-        ["<cr>"] = "which_key_ignore",
-    })
-
-    wk.register({
-        ["<leader>"] = {
-            d = "Delete without yanking",
-
-            f = {
-                name = "+Telescope",
-                f = "Find File",
-                b = "Buffers",
-                g = "Live Grep"
-            },
-
-            n = "Go to the left window",
-            e = "Go to the window below",
-            i = "Go to the window above",
-            o = "Go to the right window",
-
-            l = "Toggle line numbers",
-            r = "Toggle relative numbers",
-            h = {
-                name = "+Cursor highlighting",
-                l = "Highlight line",
-                c = "Highlight column"
-            },
-            u = "Toggle UndoTree"
-        },
-        g = {
-            l = "Move to last insertion and INSERT",
-            e = "Move to next visible line",
-            i = "Move to previous visible line",
-            h = "Search forwards and select",
-            H = "Search backwards and select",
-        }
-    })
-
-    ---------------------------------------------------------------
-    -- UndoTree
-    ---------------------------------------------------------------
-
-    vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 end
 {{ end }}
 
@@ -583,11 +497,10 @@ vim.cmd([[
     augroup end
 ]])
 
-{{ if (and (ne .chezmoi.username "root") (eq .plugins true)) }}
+{{ if (and (ne .chezmoi.username "root") (eq .nvimplugins true)) }}
 ---------------------------------------------------------------
 -- Packer
 ---------------------------------------------------------------
-
 require("packer").startup({
     {
         -- Plugin manager
@@ -599,15 +512,7 @@ require("packer").startup({
         -- Comment plugin
         { "numToStr/Comment.nvim" },
 
-        -- Enables tab completion
-        { "ervandew/supertab" },
-
         { "gentoo/gentoo-syntax"},
-
-        -- Allows incrementing dates
-        { "tpope/vim-speeddating",
-            requires = { "tpope/vim-repeat" }
-        },
 
         -- Options for surrounding text with special characters
         { "kylechui/nvim-surround",
@@ -621,31 +526,39 @@ require("packer").startup({
             run = ":TSUpdate"
         },
 
+        -- Enables tab completion
+        -- { "ervandew/supertab" },
+
+        -- Allows incrementing dates
+        -- { "tpope/vim-speeddating",
+        --     requires = { "tpope/vim-repeat" }
+        -- },
+
         -- Shows possible commands for selected key
-        { "folke/which-key.nvim",
-            config = function()
-                require("which-key").setup{}
-            end
-        },
+        -- { "folke/which-key.nvim",
+        --     config = function()
+        --         require("which-key").setup{}
+        --     end
+        -- },
 
         -- Fuzzy file finder
-        {
-            "nvim-telescope/telescope.nvim",
-            tag = "0.1.0",
-            requires = {"nvim-lua/plenary.nvim"},
-            opt = true,
-            cmd = "Telescope",
-        },
+        -- {
+        --     "nvim-telescope/telescope.nvim",
+        --     tag = "0.1.0",
+        --     requires = {"nvim-lua/plenary.nvim"},
+        --     opt = true,
+        --     cmd = "Telescope",
+        -- },
 
         -- Graphically shows undo history
-        { "mbbill/undotree",
-            cmd = { "UndotreeToggle", "UndotreeShow" },
-        },
+        -- { "mbbill/undotree",
+        --     cmd = { "UndotreeToggle", "UndotreeShow" },
+        -- },
 
         -- Allows moving through code tags
-        { "preservim/tagbar",
-            cmd = "TagbarToggle",
-        },
+        -- { "preservim/tagbar",
+        --     cmd = "TagbarToggle",
+        -- },
     },
 })
 {{ end }}

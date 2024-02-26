@@ -1,5 +1,6 @@
 # Whether to install zsh and neovim plugins
-plugins = false
+nvimplugins = false
+zshplugins = false
 # Whether to enable colemak rebinds
 colemak = true
 

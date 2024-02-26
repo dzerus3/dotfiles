@@ -205,7 +205,7 @@ setopt inc_append_history_time
 # Plugins
 ################################################################
 
-{{ if (and (ne .chezmoi.username "root") (eq .plugins true)) }}
+{{ if (and (ne .chezmoi.username "root") (eq .zshplugins true)) }}
 source $ZDOTDIR/modules/plugins.zsh
 
 # A portable alternative to zoxide
