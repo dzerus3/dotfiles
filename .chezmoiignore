@@ -4,7 +4,12 @@ SOFTWARE.md
 {{ if eq .neovim true }}
 .vimrc
 {{ else }}
-.config/nvim/init.lua
+.config/nvim
+{{ end }}
+
+{{ if ne .nvimplugins true }}
+.config/nvim/lua/plugins
+.config/nvim/lua/lazy-setup.lua
 {{ end }}
 
 {{ if ne .term "alacritty" }}
