@@ -17,6 +17,10 @@ SOFTWARE.md
 .config/foot/
 {{ end }}
 
+{{ if ne .zshcomp true }}
+.config/zsh/modules/completion.zsh
+{{ end }}
+
 {{ if ne .graphical true }}
 .config/zathura/
 .local/share/applications/
