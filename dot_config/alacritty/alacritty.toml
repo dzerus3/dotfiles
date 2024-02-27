@@ -30,7 +30,7 @@ blinking = "Off"
 shape = "Beam"
 
 [font]
-size = 11
+size = {{ .fontsize }}
 
 [font.bold]
 family = "{{ .termfont }}"
