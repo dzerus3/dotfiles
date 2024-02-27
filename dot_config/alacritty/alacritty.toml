@@ -33,21 +33,22 @@ shape = "Beam"
 size = 11
 
 [font.bold]
-family = "AnonymicePro Nerd Font Mono"
+family = "{{ .termfont }}"
 style = "Bold"
 
 [font.bold_italic]
-family = "AnonymicePro Nerd Font Mono"
+family = "{{ .termfont }}"
 style = "Bold Italic"
 
 [font.italic]
-family = "AnonymicePro Nerd Font Mono"
+family = "{{ .termfont }}"
 style = "Italic"
 
 [font.normal]
-family = "AnonymicePro Nerd Font Mono"
+family = "{{ .termfont }}"
 style = "Regular"
 
+{{ if (eq .colemak true) }}
 [[keyboard.bindings]]
 chars = "\u001B[D"
 key = "N"
@@ -77,6 +78,7 @@ mods = "Shift|Control"
 chars = "\u001Bf"
 key = "O"
 mods = "Shift|Control"
+{{ end }}
 
 [[keyboard.bindings]]
 chars = "\u0001"
@@ -94,6 +96,7 @@ key = "Space"
 mode = "~Search"
 mods = "Control"
 
+{{ if (eq .colemak true) }}
 [[keyboard.bindings]]
 action = "Left"
 key = "N"
@@ -125,6 +128,7 @@ action = "SearchFocusPrevious"
 key = "H"
 mode = "Search"
 mods = "Shift|Control"
+{{ end }}
 
 [[keyboard.bindings]]
 action = "ToggleViMode"
