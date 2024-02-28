@@ -35,6 +35,10 @@ map("", "l", "i")
 map("", "L", "I")
 map("", "gl", "gi")
 
+-- Moving to top/bottom of screen
+map("", "N", "L")
+map("", "O", "H")
+
 -- Hack to work around conflict with `d`elete `i`n
 map("n",  "yi", "yk")
 map("n",  "vi", "vk")
@@ -78,9 +82,6 @@ map("", "<C-S-H>", "<C-I>")
 -- Custom mappings
 ---------------------------------------------------------------
 
--- ze and zi move cursor to top/bottom of visible screen
-map("", "ze", "L")
-map("", "zi", "H")
 
 -- Leader-action to delete without copying
 map("",  "<leader>x", "\"_x")
