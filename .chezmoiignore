@@ -35,11 +35,12 @@ pics/
 {{ end }}
 
 {{ if ne .sway true }}
+.config/mimeapps.list
+.config/fontconfig/
 .config/fuzzel/
 .config/sway/
 .config/waybar/
 .config/xkb/
-.config/mimeapps.list
 .local/bin/sway/
 {{ end }}
 
