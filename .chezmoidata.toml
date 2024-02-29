@@ -12,8 +12,8 @@ zshabbr = true
 # Whether to automatically start tmux with zsh
 tmux = false
 
-# Whether to use neovim as EDITOR
-neovim = true
+# Which EDITOR to use
+editor = "nvim"
 
 # What app should be used for MANPAGER (less, most, or nvim)
 manpager = "less"

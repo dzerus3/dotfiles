@@ -39,7 +39,7 @@ bindkey '^x' edit-command-line
 # Activates LS_COLORS definition
 #################################################################
 
-source $ZDOTDIR/modules/lscolors.zsh
+source $HOME/.local/bin/lscolors.sh
 
 #################################################################
 # grc
@@ -70,16 +70,11 @@ source $ZDOTDIR/modules/abbreviations.zsh
 # Don't break terminal when pressing Ctrl + s
 stty ixon
 
-# Sets default editor
-if command -v nvim &> /dev/null; then
-    export EDITOR='nvim'
-    abbrev editvimrc="chezmoi edit $HOME/.config/nvim/init.lua"
-elif command -v vim &> /dev/null; then
-    export EDITOR='vim'
-    abbrev editvimrc="chezmoi edit $HOME/.vimrc"
-elif command -v nano &> /dev/null; then
-    export EDITOR='nano'
+{{ if .editor }}
+if command -v {{ .editor }} &> /dev/null; then
+    export EDITOR={{ .editor }}
 fi
+{{ end }}
 
 # Enable colors
 autoload -U colors && colors
@@ -95,12 +90,6 @@ export GPG_TTY=$(tty)
 export PASSWORD_STORE_DIR=$XDG_DATA_HOME/pass
 export GNUPGHOME="$XDG_CONFIG_HOME"/gnupg
 
-# most configuration
-export MOST_INITFILE=~/.config/mostkey
-
-# Allows executing commands from .local/bin
-export PATH=$HOME/.local/bin:$PATH
-
 # Cargo automatically installs to .local/bin
 export CARGO_INSTALL_ROOT=$HOME/.local
 
@@ -112,7 +101,7 @@ alias wget="wget --hsts-file $XDG_STATE_HOME/wget-hsts"
 
 # Initializes zoxide
 if command -v zoxide &> /dev/null; then
-    eval "$(zoxide init --cmd cd zsh)"
+    eval "$(zoxide init zsh)"
     # Excludes files from zoxide completion
     export _ZO_EXCLUDE_DIRS=$HOME:$XDG_CACHE_HOME/*:$ZDOTDIR/plugins/*:$HOME/.mozilla/:*/.git/
     export _ZO_DATA_DIR="$XDG_STATE_HOME/zoxide"
@@ -166,13 +155,8 @@ setopt inc_append_history_time
 {{ if (and (ne .chezmoi.username "root") (eq .zshplugins true)) }}
 source $ZDOTDIR/modules/plugins.zsh
 
-# A portable alternative to zoxide
-#plugin-load skywind3000/z.lua
-
 # Allows displaying git status as part of prompt
 plugin-load woefe/git-prompt.zsh
-# Enables syntax highlighting in the shell
-# TODO: https://github.com/xero/dotfiles/blob/master/zsh/.zsh/syntax.zsh
 plugin-load zdharma-continuum/fast-syntax-highlighting
 {{ end }}
 

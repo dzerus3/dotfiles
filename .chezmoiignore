@@ -1,9 +1,12 @@
 README.md
 SOFTWARE.md
 
-{{ if eq .neovim true }}
+{{ if eq .editor "nvim" }}
 .vimrc
+{{ else if eq .editor "vim" }}
+.config/nvim
 {{ else }}
+.vimrc
 .config/nvim
 {{ end }}
 
