@@ -28,6 +28,10 @@ open_url_with qutebrowser
 
 confirm_os_window_close 0
 
+{{ if .eq fish true }}
+shell /bin/fish
+{{ end }} 
+
 # TODO: Does this work?
 #action_alias launch_tab launch --cwd=current --type=tab
 
