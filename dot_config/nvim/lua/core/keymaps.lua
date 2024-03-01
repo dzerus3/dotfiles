@@ -68,12 +68,6 @@ map("", "I", "<C-b>")
 -- Lower case j joins lines
 map("", "j", "J")
 
--- Easy window switching
-map("", "<leader>n", ":wincmd h<CR>")
-map("", "<leader>e", ":wincmd j<CR>")
-map("", "<leader>i", ":wincmd k<CR>")
-map("", "<leader>o", ":wincmd l<CR>")
-
 -- Movement between previous motions
 map("", "<C-H>",   "<C-O>")
 map("", "<C-S-H>", "<C-I>")
@@ -103,12 +97,12 @@ map("v", "<leader>d", "\"_d")
 -- Enter clears toggles highlighting
 map("", "<CR>", ":set hlsearch!<CR>")
 
--- <leader>l toggles line numbers
-map("n", "<leader>l", ":set number!<CR>")
--- <leader>r toggles relative numbers
-map("n", "<leader>r", ":set relativenumber!<CR>")
--- <leader>a toggles between the two
-map("n", "<leader>a", ":set relativenumber!<CR>:set number!<CR>")
+-- Toggles line numbers
+map("n", "<leader>ln", ":set number!<CR>")
+-- Toggles relative numbers
+map("n", "<leader>lr", ":set relativenumber!<CR>")
+-- Toggles line numbers and relative numbers
+map("n", "<leader>lf", ":set relativenumber!<CR>:set number!<CR>")
 
 -- Leader + h allows highlighting `l`ine or `c`olumn
 map("n", "<leader>hl", ":set cursorline!<CR>")

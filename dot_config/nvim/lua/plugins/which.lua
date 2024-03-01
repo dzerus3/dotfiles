@@ -7,13 +7,22 @@ return {
 
         -- Disable all functionality except operators and buffers
         require("which-key").register({
-            ["<leader>"] = "which_key_ignore",
+            ["<leader>"] = {
+                ["c"] = "which_key_ignore",
+                ["C"] = "which_key_ignore",
+                ["d"] = "which_key_ignore",
+                ["D"] = "which_key_ignore",
+                ["s"] = "which_key_ignore",
+                ["S"] = "which_key_ignore",
+                ["x"] = "which_key_ignore",
+                ["X"] = "which_key_ignore",
+            },
             ["c"] = "which_key_ignore",
             ["d"] = "which_key_ignore",
             ["g"] = "which_key_ignore",
             ["v"] = "which_key_ignore",
             ["y"] = "which_key_ignore",
-            ["z"] = "which_key_ignore",
+            -- ["z"] = "which_key_ignore",
         })
     end,
     opts = {
@@ -33,7 +42,7 @@ return {
                 text_objects = false,
                 windows = true,
                 nav = true,
-                z = false,
+                z = true,
                 g = false
             },
         }
