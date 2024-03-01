@@ -1,0 +1,118 @@
+# vim: ft=fish
+
+function fish_prompt
+    if test $EUID -eq 0
+        string join '' -- (set_color red) '[' (set_color magenta) (prompt_pwd) (set_color red) '] '(set_color normal)
+    else
+        string join '' -- (set_color blue) '[' (set_color green) (prompt_pwd) (set_color normal) (fish_git_prompt) (set_color blue) '] '(set_color normal)
+    end
+end
+
+function fish_greeting
+    if type -q fortune; and type -q lolcat
+        fortune | lolcat
+    else if type -q fortune
+        fortune
+    end
+end
+
+function basic_settings
+    {{ if eq .editor "nvim" }}
+    if type -q nvim
+        set EDITOR 'nvim'
+    end
+    {{ else if eq .editor "vim" }}
+    if type -q vim
+        set EDITOR 'vim'
+    end
+    {{ end }}
+
+    # bat configuration
+    set BAT_STYLE 'plain'
+
+    # delta configuration
+    set DELTA_PAGER 'less -R'
+
+    # pass configuration
+    set GPG_TTY $(tty)
+    set PASSWORD_STORE_DIR $XDG_DATA_HOME/pass
+    set GNUPGHOME "$XDG_CONFIG_HOME"/gnupg
+
+    # Cargo automatically installs to .local/bin
+    set CARGO_INSTALL_ROOT $HOME/.local
+
+    # Sets wget to keep history in .local/state
+    alias wget "wget --hsts-file $XDG_STATE_HOME/wget-hsts"
+
+    # Excludes certain directories from autocompletion
+    set _ZO_EXCLUDE_DIRS "$HOME:$XDG_CACHE_HOME/*:$ZDOTDIR/plugins/*:$HOME/.mozilla/:*/.git/"
+    # Initializes zoxide
+    set _ZO_DATA_DIR "$XDG_STATE_HOME/zoxide"
+
+    # Sets less keybindings file.
+    set LESSKEYIN "$XDG_CONFIG_HOME/lesskey"
+
+    # Disables less history
+    set LESSHISTFILE -
+
+    # Enable less color support
+    set LESS '-ix8RmPm'
+
+    bind \cq backward-kill-bigword
+
+    {{ if (eq .manpager "nvim") }}
+    set MANPAGER 'nvim +Man!'
+    {{ else }}
+    set MANPAGER 'less -ix8RmPm'
+    {{ end }}
+end
+
+function configure_aliases
+    ls   --version | grep GNU > /dev/null && alias ls 'ls --color=auto'
+    grep --version | grep GNU > /dev/null && alias grep 'grep --color=auto'
+    diff --version | grep GNU > /dev/null && alias diff 'diff --color=auto'
+    alias ip 'ip --color=auto'
+
+    abbr -a cls clear
+    abbr -a md mkdir
+
+    abbr -a l ls
+    abbr -a ll ls -l
+    abbr -a la ls -a
+    abbr -a lal ls -al
+    abbr -a lla ls -la
+    abbr -a lld ls -ld
+    abbr -a ldl ls -dl
+
+    # Dotfile configuration
+    abbr -a chez chezmoi
+
+    if type -q task
+        abbr -a t task
+        abbr -a ta task add
+    end
+
+    if type -q buku
+        abbr -a b buku
+        abbr -a ba buku --add
+        abbr -a buku-backup buku -e ~/.local/share/buku/bookmarks.md
+    end
+end
+
+function start_tmux
+    if type -q tmux; and not set -q TMUX
+        tmux attach || tmux new-session
+    end
+end
+
+if status is-interactive
+    {{ if eq .tmux true }}
+    start_tmux
+    {{ end }}
+    source $HOME/.local/bin/lscolors.sh
+
+    basic_settings
+    configure_aliases
+    zoxide init fish | source
+end
+

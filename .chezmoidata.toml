@@ -4,6 +4,8 @@ zshplugins = false
 # Whether to enable colemak rebinds
 colemak = true
 
+# Whether to use fish
+fish = false
 # Whether to enable zsh completion
 zshcomp = true
 # Whether to enable zsh abbeviations
