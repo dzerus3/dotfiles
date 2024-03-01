@@ -302,6 +302,6 @@ fi
 # Opens in tmux, provided tmux is installed and is not already
 # launched.
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [ -z "$TMUX" ]; then
-    exec tmux attach || exec tmux new-session
+    tmux list-sessions || exec tmux new-session && exec tmux attach
 fi
 {{ end }}
