@@ -3,8 +3,8 @@ E forw-screen
 i back-line
 I back-screen
 
-h repeat-search
-H reverse-search
+k repeat-search
+K reverse-search
 
 n left-scroll
 o right-scroll
