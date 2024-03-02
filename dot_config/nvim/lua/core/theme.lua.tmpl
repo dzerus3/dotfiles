@@ -1,6 +1,9 @@
 vim.opt.background = "dark"
 vim.g.hybrid_custom_term_colors = 1
 
+{{ if (eq .nvimplugins  true) }}
+vim.cmd.colorscheme "catppuccin"
+{{ else }}
 -- Sets up https://github.com/w0ng/vim-hybrid
 vim.cmd([[
     hi clear
@@ -14,7 +17,7 @@ vim.cmd([[
     let g:colors_name = "hybrid"
 
     "}}}
-    " GUI And Cterm Palettes:"{{{
+    " GUI And Cterm Palettes:"
     " ----------------------------------------------------------------------------
 
     let s:palette = {'gui' : {} , 'cterm' : {}}
@@ -108,7 +111,7 @@ vim.cmd([[
     let s:palette.cterm.darkpurple = { 'dark' : "53"               , 'light' : "53"  }
 
     "}}}
-    " Formatting Options:"{{{
+    " Formatting Options:"
     " ----------------------------------------------------------------------------
     let s:none   = "NONE"
     let s:t_none = "NONE"
@@ -121,7 +124,7 @@ vim.cmd([[
     let s:i      = ",italic"
 
     "}}}
-    " Highlighting Primitives:"{{{
+    " Highlighting Primitives:"
     " ----------------------------------------------------------------------------
     function! s:build_prim(hi_elem, field)
     " Given a:hi_elem = bg, a:field = comment
@@ -216,7 +219,7 @@ vim.cmd([[
     exe "let s:sp_darkpurple = ' guisp=". s:palette.gui.darkpurple[s:style] ."'"
 
     "}}}
-    " Vim Highlighting: (see :help highlight-groups)"{{{
+    " Vim Highlighting: (see :help highlight-groups)"
     " ----------------------------------------------------------------------------
     exe "hi! ColorColumn"   .s:fg_none        .s:bg_line        .s:fmt_none
     "   Conceal"
@@ -274,7 +277,7 @@ vim.cmd([[
     exe "hi! Normal"        .s:fg_foreground  .s:bg_normal      .s:fmt_none
 
     "}}}
-    " Generic Syntax Highlighting: (see :help group-name)"{{{
+    " Generic Syntax Highlighting: (see :help group-name)"
     " ----------------------------------------------------------------------------
     exe "hi! Comment"         .s:fg_comment     .s:bg_none        .s:fmt_none
 
@@ -329,7 +332,7 @@ vim.cmd([[
     "   qfError"
 
     "}}}
-    " Diff Syntax Highlighting:"{{{
+    " Diff Syntax Highlighting:"
     " ----------------------------------------------------------------------------
     " Diff
     "   diffOldFile
@@ -351,12 +354,12 @@ vim.cmd([[
 
     "}}}
     "
-    " This is needed for some reason: {{{
+    " This is needed for some reason: 
 
     let &background = s:style
 
     " }}}
-    " Legal:"{{{
+    " Legal:"
     " ----------------------------------------------------------------------------
     " Copyright (c) 2011 Ethan Schoonover
     " Copyright (c) 2009-2012 NanoTech
@@ -417,3 +420,4 @@ vim.cmd([[
         \ ctermbg=NONE
         \ cterm=NONE
 ]])
+{{ end }}

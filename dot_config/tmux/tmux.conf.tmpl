@@ -138,4 +138,11 @@ bind-key -T copy-mode-vi 'v' send-keys -X begin-selection
 bind-key -T copy-mode-vi 'C-v' send-keys -X rectangle-toggle #TODO: Broken
 bind-key -T copy-mode-vi 'y' send-keys -X copy-selection
 
-run '~/.config/tmux/plugins/minimal.tmux'
+
+set -g @catppuccin_status_modules_right "user host session"
+set -g @catppuccin_window_right_separator "█ "
+set -g @catppuccin_status_left_separator  "█"
+set -g @catppuccin_status_right_separator "█"
+
+set -g @catppuccin_flavour 'mocha'
+run '~/.config/tmux/plugins/catpuccin/catppuccin.tmux'
