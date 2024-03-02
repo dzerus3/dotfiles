@@ -1,15 +1,15 @@
 return {
     "catppuccin/nvim",
     name = "catppuccin",
-    priority = 1000,
-    config = function ()
-        require("catppuccin").setup({
-            flavour = "mocha",
-            color_overrides = {
-                mocha = {
-                    base = "#14141F",
-                },
+    opts = {
+        term_colors = true,
+        transparent_background = true,
+        flavour = "mocha",
+        color_overrides = {
+            mocha = {
+                base = "#0A0A10",
             },
-        })
-    end
+        },
+    },
+    priority = 1000,
 }
