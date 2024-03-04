@@ -17,6 +17,7 @@ end
 
 -- With a map leader it's possible to do extra key combinations
 vim.g.mapleader = " "
+vim.g.maplocalleader = ","
 
 ---------------------------------------------------------------
 -- Colemak remappings
