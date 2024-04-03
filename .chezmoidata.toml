@@ -23,9 +23,9 @@ manpager = "less"
 # Whether to download my preferred fonts
 fonts = false
 # What font size to use
-fontsize = "14"
+fontsize = "12"
 # Font to use for terminal emulators
-termfont = "AnonymicePro Nerd Font Mono"
+termfont = "0xProto Nerd Font Mono"
 # Font to use for desktop
 deskfont = "CodeNewRoman Nerd Font Mono"
 # Font to use for everything else

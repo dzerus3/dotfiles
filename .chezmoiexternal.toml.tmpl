@@ -1,9 +1,5 @@
 # vim: ft=toml
 {{ if (eq .fonts true) }}
-[".local/share/fonts/anonymous-pro"]
-    type = "archive"
-    url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/AnonymousPro.tar.xz"
-    exact = true
 [".local/share/fonts/code-new-roman"]
     type = "archive"
     url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/CodeNewRoman.tar.xz"
@@ -11,5 +7,9 @@
 [".local/share/fonts/questrial"]
     type = "archive"
     url = "https://www.1001fonts.com/download/questrial.zip"
+    exact = true
+[".local/share/fonts/0xproto"]
+    type = "archive"
+    url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/0xProto.tar.xz"
     exact = true
 {{ end }}
